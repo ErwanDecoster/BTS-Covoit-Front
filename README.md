@@ -1,5 +1,7 @@
 # covoit
 
+Create by Erwan and Tristan
+
 ## Project setup
 ```
 npm install
