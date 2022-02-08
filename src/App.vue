@@ -1,9 +1,13 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Login</router-link> |
+    <router-link to="/registration">Registration</router-link> |
+    <router-link to="/SearchTrip">SearchTrip</router-link> |
+    <router-link to="/Trip">Trip</router-link> |
   </div>
-  <router-view/>
+  <div class="max-w-sm mx-auto relative">
+    <router-view/>
+  </div>
 </template>
 
 <style>
