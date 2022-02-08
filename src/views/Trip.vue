@@ -17,22 +17,20 @@
                 <p>{{ trip.startingPoint }}</p>
               </li>
             </ul>
-            <transition name="scaleY" mode="out-in">
-              <div v-show="trip.paths.visible" class="flex flex-col gap-4 ">
-                <ul v-for="path in trip.paths" v-bind:key="path.startingTime" class="stop">
-                  <li class="flex gap-6 items-center">
-                    <p class="w-16">{{ path.startingTime }}</p>
-                    <div class="h-4 w-4 bg-neutral-900 rounded-full relative">
-                      <div class="absolute left-1/2 -translate-x-1/2 block content-none bg-neutral-900 h-4 w-1 top-5"></div>
-                    </div>
-                    <div class="flex gap-2 content-end">
-                      <p>{{ path.startingPoint }} - </p>
-                      <p class="text-neutral-500 text-sm leading-6">{{ path.people }}</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </transition>
+            <div v-show="trip.paths.visible" class="flex flex-col gap-4">
+              <ul v-for="path in trip.paths" v-bind:key="path.startingTime" class="stop">
+                <li class="flex gap-6 items-center">
+                  <p class="w-16">{{ path.startingTime }}</p>
+                  <div class="h-4 w-4 bg-neutral-900 rounded-full relative">
+                    <div class="absolute left-1/2 -translate-x-1/2 block content-none bg-neutral-900 h-4 w-1 top-5"></div>
+                  </div>
+                  <div class="flex gap-2 content-end">
+                    <p>{{ path.startingPoint }} - </p>
+                    <p class="text-neutral-500 text-sm leading-6">{{ path.people }}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <ul class="stop">
               <li class="flex gap-6 items-center">
                 <p class="w-16">{{ trip.endTime }}</p>
@@ -92,15 +90,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.scaleY-enter-active,
-.scaleY-leave-active {
-  transition: 1s
-}
-
-.scaleY-enter,
-.scaleY-leave-to {
-  height: 0;
-}
-</style>
