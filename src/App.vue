@@ -1,13 +1,17 @@
 <template>
-  <div id="nav">
+  <!-- <div id="nav">
     <router-link to="/">Login</router-link> |
     <router-link to="/registration">Registration</router-link> |
     <router-link to="/SearchTrip">SearchTrip</router-link> |
     <router-link to="/Trip">Trip</router-link> |
     <router-link to="/ProfilSetting">ProfilSetting</router-link> |
     <router-link to="/Vehicles">Vehicles</router-link> |
-  </div>
-  <div class="max-w-sm mx-auto relative h-screen">
+    <router-link to="/CreateTrip">CreateTrip</router-link> |
+    <router-link to="/CreateVehicle">CreateVehicle</router-link> |
+    <router-link to="/Personalinformation">Personalinformation</router-link> |
+    <router-link to="/EditPassword">EditPassword</router-link> |
+  </div> -->
+  <div class="max-w-sm mx-auto relative h-screen absolute inset-0 px-2">
     <router-view/>
   </div>
 </template>
