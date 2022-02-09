@@ -3,6 +3,8 @@ import Login from '../views/Login.vue';
 import Registration from '../views/Registration.vue';
 import SearchTrip from '../views/SearchTrip.vue';
 import Trip from '../views/Trip.vue';
+import ProfilSetting from '../views/ProfilSetting.vue';
+import Vehicles from '../views/Vehicles.vue';
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/trip',
     name: 'Trip',
     component: Trip,
+  },
+  {
+    path: '/ProfilSetting',
+    name: 'ProfilSetting',
+    component: ProfilSetting,
+  },
+  {
+    path: '/Vehicles',
+    name: 'Vehicles',
+    component: Vehicles,
   },
 ];
 

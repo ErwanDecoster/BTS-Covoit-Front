@@ -4,8 +4,10 @@
     <router-link to="/registration">Registration</router-link> |
     <router-link to="/SearchTrip">SearchTrip</router-link> |
     <router-link to="/Trip">Trip</router-link> |
+    <router-link to="/ProfilSetting">ProfilSetting</router-link> |
+    <router-link to="/Vehicles">Vehicles</router-link> |
   </div>
-  <div class="max-w-sm mx-auto relative">
+  <div class="max-w-sm mx-auto relative h-screen">
     <router-view/>
   </div>
 </template>
