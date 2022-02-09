@@ -12,7 +12,7 @@
           <button class="bg-white p-2 rounded-full text-neutral-900 font-bold border border-neutral-900">Clio 2 - Rouge</button>
           <button class="bg-white p-2 rounded-full text-neutral-900 font-bold border border-neutral-900">Clio 2 - Bleu</button>
           <button class="bg-white p-2 rounded-full text-neutral-900 font-bold border border-neutral-900">Clio 2 - Verte</button>
-        <router-link to="/CreateVehicle" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">CreateVehicle</router-link>
+          <router-link to="/CreateVehicle" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Crée un nouveau vehicule</router-link>
         </div>
       </div>
       <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>

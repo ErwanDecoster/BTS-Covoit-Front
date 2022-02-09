@@ -9,9 +9,9 @@
       <div>
         <h2 class="text-2xl font-bold m-6">Mon compte</h2>
         <div class="flex flex-col gap-4">
+          <router-link to="/Personalinformation" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Information personnel</router-link>
           <router-link to="/Vehicles" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Mes vehicules</router-link>
           <router-link to="/Trip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Historisque de voyage</router-link>
-          <router-link to="/Personalinformation" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Information personnel</router-link>
         </div>
       </div>
       <button class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Me deconnecter</button>
