@@ -5,6 +5,10 @@ import SearchTrip from '../views/SearchTrip.vue';
 import Trip from '../views/Trip.vue';
 import ProfilSetting from '../views/ProfilSetting.vue';
 import Vehicles from '../views/Vehicles.vue';
+import CreateTrip from '../views/CreateTrip.vue';
+import CreateVehicle from '../views/CreateVehicle.vue';
+import Personalinformation from '../views/Personalinformation.vue';
+import EditPassword from '../views/EditPassword.vue';
 
 const routes = [
   {
@@ -36,6 +40,26 @@ const routes = [
     path: '/Vehicles',
     name: 'Vehicles',
     component: Vehicles,
+  },
+  {
+    path: '/CreateTrip',
+    name: 'CreateTrip',
+    component: CreateTrip,
+  },
+  {
+    path: '/CreateVehicle',
+    name: 'CreateVehicle',
+    component: CreateVehicle,
+  },
+  {
+    path: '/Personalinformation',
+    name: 'Personalinformation',
+    component: Personalinformation,
+  },
+  {
+    path: '/EditPassword',
+    name: 'EditPassword',
+    component: EditPassword,
   },
 ];
 

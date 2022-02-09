@@ -5,7 +5,7 @@
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
     </div>
-    <div class="grow flex flex-col justify-between gap-4 pb-12">
+    <div class="grow flex flex-col justify-between gap-4 pb-20">
       <div>
         <h2 class="text-2xl font-bold m-6">Clio 2 - Bleu</h2>
         <div class="flex flex-col gap-4">
