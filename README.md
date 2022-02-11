@@ -4,7 +4,7 @@ Create by Erwan and Tristan
 
 ## Project setup
 
-Download NodeJs 17.5.0 : https://nodejs.org/en/
+Download NodeJs 16.14.0 LTS : https://nodejs.org/en/
 
 Check the install tools 
 
