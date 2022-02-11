@@ -3,8 +3,16 @@
 Create by Erwan and Tristan
 
 ## Project setup
+
+Download : https://nodejs.org/en/
+Check the install tools 
+
+### Install VueJS
 ```
-npm install
+npm install -g @vue/cli
+```
+```
+npm update -g @vue/cli
 ```
 
 ### Compiles and hot-reloads for development
