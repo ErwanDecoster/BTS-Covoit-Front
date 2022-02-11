@@ -19,7 +19,6 @@
   </div>
   <navbar/>
 </template>
-
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Trip from '@/components/Trip.vue';
