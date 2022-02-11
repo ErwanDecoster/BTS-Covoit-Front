@@ -1,6 +1,8 @@
 # covoit
 
-Create by Erwan and Tristan
+Create by <a href="https://github.com/ErwanDecoster">Erwan</a> and <a href="https://github.com/Tristan-Boudra">Tristan</a>
+
+This is a project consisting in creating a carpooling web app adapted to mobile and PC; the goal: to define a point of departure and arrival and choose the other users we want to take on our way or vice versa and find a driver to go where we want.
 
 ## Project setup
 
