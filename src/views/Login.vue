@@ -4,7 +4,26 @@
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
-      <form class="flex flex-col gap-4 ">
+      <?php 
+        if(isset($_GET['login_err'])){
+          $err = htmlspecialchars($_GET['login_err']) //vérifie que l'utilisateur ne rentre pas n'importe quoi
+
+          switch($err){
+            case 'password':
+
+            breack;
+
+            case 'tel':
+
+            breack;
+
+            case 'already':
+
+            breack;
+          }
+        }
+      ?>
+      <form class="flex flex-col gap-4" action="connexion.php" method="post">
         <h2 class="text-2xl font-bold m-6">Connection</h2>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="tel">Telephone : </label>

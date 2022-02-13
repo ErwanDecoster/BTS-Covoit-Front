@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(!ISSET($_SESSION['users']))
+    header('Location:index.php');
+?>
 <template>
   <div id="registration" class="h-full flex flex-col">
     <div class="logo pt-6">
@@ -10,7 +15,7 @@
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
         <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">Erwan decoster</p>
+          <p class="grow text-1xl text-left"><?php echo $_SESSION['users']?></p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
