@@ -39,17 +39,14 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
-
 import axios from 'axios';
 
 export default {
   components: { Navbar },
   data() {
     return {
-      allData: [
-        { motorization: 'diesel' },
-        { motorization: 'hybride' },
-      ],
+      allVehiclesForUser: '',
+      motorization: '',
     };
   },
   methods: {
@@ -57,16 +54,7 @@ export default {
       axios.post('http://localhost/actions.php', {
         action: 'fetchall_motorization',
       }).then((response) => {
-        this.allData = response.data;
-        console.log(response);
-      });
-    },
-    fetchAllVehiclesForUser() {
-      axios.post('http://localhost/actions.php', {
-        action: 'fetchall_vehicles_for_user',
-        tel: '0625306813',
-      }).then((response) => {
-        this.allData = response.data;
+        this.motorization = response.data;
         console.log(response);
       });
     },

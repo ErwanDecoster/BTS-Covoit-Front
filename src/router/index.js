@@ -7,6 +7,7 @@ import ProfilSetting from '../views/ProfilSetting.vue';
 import Vehicles from '../views/Vehicles.vue';
 import CreateTrip from '../views/CreateTrip.vue';
 import CreateVehicle from '../views/CreateVehicle.vue';
+import VehiclesEdit from '../views/VehiclesEdit.vue';
 import Personalinformation from '../views/Personalinformation.vue';
 import EditPassword from '../views/EditPassword.vue';
 
@@ -50,6 +51,12 @@ const routes = [
     path: '/CreateVehicle',
     name: 'CreateVehicle',
     component: CreateVehicle,
+  },
+  {
+    path: '/VehiclesEdit/:id',
+    name: 'VehiclesEdit',
+    component: VehiclesEdit,
+    props: true,
   },
   {
     path: '/Personalinformation',
