@@ -1,8 +1,3 @@
-<?php
-  session_start();
-  if(!ISSET($_SESSION['users']))
-    header('Location:index.php');
-?>
 <template>
   <div id="registration" class="h-full flex flex-col">
     <div class="logo pt-6">
@@ -15,21 +10,21 @@
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
         <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left"><?php echo $_SESSION['users']?></p>
+          <p class="grow text-1xl text-left">{{ PersonnalInformation.Name }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">01 02 03 04 05</p>
+          <p class="grow text-1xl text-left">{{ PersonnalInformation.Tel }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">Avenue des Champs Elysée</p>
+          <p class="grow text-1xl text-left">{{ PersonnalInformation.Adresse }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
@@ -47,8 +42,27 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
+import axios from 'axios';
 
 export default {
   components: { Navbar },
+  data() {
+    return {
+      PersonnalInformation: '',
+    };
+  },
+  methods: {
+    fetchPersonnalInformation() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetch_personnal_information',
+      }).then((response) => {
+        this.PersonnalInformation = response.data;
+        console.log(response.data);
+      });
+    },
+  },
+  mounted() {
+    this.fetchPersonnalInformation();
+  },
 };
 </script>

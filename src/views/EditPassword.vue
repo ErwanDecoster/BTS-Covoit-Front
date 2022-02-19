@@ -6,7 +6,7 @@
       </h1>
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
-      <form class="flex flex-col gap-4">
+      <form action="@/php/forgot.php" method="POST" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold my-6">Modification du mot de passe :</h2>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Mot de passe actuel : </label>
