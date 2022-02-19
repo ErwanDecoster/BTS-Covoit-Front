@@ -25,6 +25,9 @@
           <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="color" id="color">
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
+        <div v-for="row in allData" v-bind:key="row">
+          <p>{{ row.libellet }}</p>
+        </div>
       </form>
       <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
     </div>
@@ -34,7 +37,40 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 
+import axios from 'axios';
+
 export default {
   components: { Navbar },
+  data() {
+    return {
+      allData: [
+        { motorization: 'diesel' },
+        { motorization: 'hybride' },
+      ],
+    };
+  },
+  methods: {
+    fetchAllMotorization() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_motorization',
+      }).then((response) => {
+        this.allData = response.data;
+        console.log(response);
+      });
+    },
+    fetchAllVehiclesForUser() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_vehicles_for_user',
+        tel: '0625306813',
+      }).then((response) => {
+        this.allData = response.data;
+        console.log(response);
+      });
+    },
+  },
+  mounted() {
+    this.fetchAllMotorization();
+    console.log(this.allData);
+  },
 };
 </script>
