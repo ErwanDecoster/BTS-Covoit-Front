@@ -36,7 +36,6 @@
   </div>
 </template>
 
-<!--
 <script>
 
 import axios from 'axios';
@@ -73,4 +72,4 @@ export default {
     console.log(this.allData);
   },
 };
-</script>-->
+</script>

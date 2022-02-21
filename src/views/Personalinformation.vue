@@ -10,21 +10,21 @@
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
         <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">{{ PersonnalInformation.Name }}</p>
+          <p class="grow text-1xl text-left">{{ PersonnalInformation[0].l_name + " " + PersonnalInformation[0].f_name }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">{{ PersonnalInformation.Tel }}</p>
+          <p class="grow text-1xl text-left">{{ "0" + PersonnalInformation[0].tel}}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">{{ PersonnalInformation.Adresse }}</p>
+          <p class="grow text-1xl text-left">{{ PersonnalInformation[0].password}}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
