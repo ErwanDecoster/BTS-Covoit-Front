@@ -6,6 +6,7 @@
       </h1>
       <form class="flex flex-col gap-4 ">
         <h2 class="text-2xl font-bold m-6">Créer un intinéraire :</h2>
+        <p v-show="!allVehiclesForUser" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Attention vous n'avez pas encore de vehicule enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full text-white font-bold">Crée un vehicule</router-link></p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="date_of_travel">Date de départ : </label>
           <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="date" name="date_of_travel" id="date_of_travel">
@@ -24,7 +25,11 @@
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="vehicle">Vehicule : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle" id="vehicle">
+          <select v-show="allVehiclesForUser != ''" v-model="vehicle" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="" id="">
+            <option v-for="vehicle in allVehiclesForUser" v-bind:key="vehicle" :value="vehicle.id_vehicles">{{ vehicle.vehicle_name }} - {{ vehicle.color }}</option>
+          </select>
+          <p v-show="!allVehiclesForUser" class="text-red-500 text-left">Aucun vehicule n'est enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full font-bold">Crée un vehicule</router-link></p>
+          <!-- <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle" id="vehicle"> -->
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
       </form>
@@ -34,8 +39,31 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
+import axios from 'axios';
 
 export default {
   components: { Navbar },
+  data() {
+    return {
+      vehicle: '',
+      allVehiclesForUser: '',
+    };
+  },
+  methods: {
+    fetchAllVehiclesForUser() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_vehicles_for_user',
+        tel: '0625306813',
+      }).then((response) => {
+        if (response.data !== ' ') {
+          this.allVehiclesForUser = response.data;
+        }
+        console.log(response.data);
+      });
+    },
+  },
+  mounted() {
+    this.fetchAllVehiclesForUser();
+  },
 };
 </script>

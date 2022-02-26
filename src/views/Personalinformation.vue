@@ -17,7 +17,7 @@
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">01 02 03 04 05</p>
+          <p class="grow text-1xl text-left">{{ PersonnalInformation[0].tel }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
@@ -43,7 +43,27 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 
+import axios from 'axios';
+
 export default {
   components: { Navbar },
+  data() {
+    return {
+      PersonnalInformation: '',
+    };
+  },
+  methods: {
+    fetchPersonnalInformation() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetch_personnal_information',
+      }).then((response) => {
+        this.PersonnalInformation = response.data;
+        console.log(response.data);
+      });
+    },
+  },
+  mounted() {
+    this.fetchPersonnalInformation();
+  },
 };
 </script>
