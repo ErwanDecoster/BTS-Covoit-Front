@@ -14,10 +14,10 @@
           <label class="text-left font-bold" for="houre_of_travel">Heure de départ : </label>
           <input v-model="houre_of_travel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="houre_of_travel" id="houre_of_travel">
         </div>
-        <div class="grid gap-2" id="app-autocomplete-here">
+        <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Point de départ : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" type="text" name="starting_point" id="starting_point" v-model="inputCity" v-on:keyup="onKeypressCity($event)" v-on:keydown="onKeypressCity($event)">
-        <div class="autocomplete-here-suggestions-container" v-if="suggestionsHere.length">
+          <input v-model="starting_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" type="text" name="starting_point" id="starting_point">
+        <!-- <div class="autocomplete-here-suggestions-container" v-if="suggestionsHere.length">
           <ul>
             <li v-for="suggestion in suggestionsHere" :key="suggestion.id">
               <span v-on:click="onClickSuggestHere(suggestion)">{{ suggestion.lib }}</span>
@@ -29,7 +29,7 @@
             Vous venez de sélectionner la ville suivante: <br>
             <b><i>{{ suggestionSelected }}</i></b>
           </h5>
-        </div>
+        </div> -->
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
@@ -45,7 +45,7 @@
   </div>
   <navbar/>
 </template>
-<script>
+<!--<script>
 import Navbar from '@/components/Navbar.vue';
 /* import axios from 'axios'; */
 
@@ -112,5 +112,32 @@ export default {
   /* mounted() {
     this.fetchCreateTrip();
   }, */
+};
+</script>-->
+
+<script>
+import Navbar from '@/components/Navbar.vue';
+import axios from 'axios';
+
+export default {
+  components: { Navbar },
+  data() {
+    return {
+      CreateTrip: '',
+    };
+  },
+  methods: {
+    fetchCreateTrip() {
+      axios.get('http://localhost/actions.php', {
+        action: 'fetch_create_trip',
+      }).then((response) => {
+        this.CreateTrip = response.data;
+        console.log(response.data);
+      });
+    },
+  },
+  mounted() {
+    this.fetchCreateTrip();
+  },
 };
 </script>
