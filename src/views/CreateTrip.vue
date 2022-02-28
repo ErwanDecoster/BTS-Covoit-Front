@@ -44,6 +44,11 @@
           <p v-show="!allVehiclesForUser" class="text-red-500 text-left">Aucun vehicule n'est enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full font-bold">Crée un vehicule</router-link></p>
           <!-- <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle" id="vehicle"> -->
         </div>
+        <ul>
+          <li v-for="city in allCity" :key="city">
+            <p>{{ city.ville_id }} - {{ city.ville_nom_simple }} - {{ city.ville_code_postal }}</p>
+          </li>
+        </ul>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
       </form>
     </div>
@@ -60,6 +65,7 @@ export default {
     return {
       vehicle: '',
       allVehiclesForUser: '',
+      allCity: '',
     };
   },
   methods: {
@@ -74,9 +80,20 @@ export default {
         console.log(response.data);
       });
     },
+    fetchAllCity() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_city',
+      }).then((response) => {
+        if (response.data !== ' ') {
+          this.allCity = response.data;
+        }
+        console.log(response.data);
+      });
+    },
   },
   mounted() {
     this.fetchAllVehiclesForUser();
+    this.fetchAllCity();
   },
 };
 </script>

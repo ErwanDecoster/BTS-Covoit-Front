@@ -2,7 +2,6 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    total: 2,
     VehicleColor: [
       { color: 'Bleu' },
       { color: 'Rouge' },
