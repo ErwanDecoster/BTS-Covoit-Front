@@ -1,15 +1,15 @@
 <template>
   <div @click="extend = !extend" class="bg-white p-4 rounded-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] flex flex-col gap-4 duration-200">
-    <div class="stop">
+    <div class="stop" :key="index" v-for="(Trips, index) in Trips">
       <div class="flex gap-6 items-center">
-        <p class="w-14">{{ trip.startingTime }}</p>
+        <p class="w-14">{{ Trips.startingTime }}</p>
         <div class="h-4 w-4 bg-neutral-900 rounded-full relative">
           <div class="absolute left-1/2 -translate-x-1/2 block rounded-full content-none bg-neutral-900 h-4 w-1 top-5 "></div>
         </div>
-        <p>{{ trip.startingPoint }}</p>
+        <p>{{ Trips.city }}</p>
       </div>
     </div>
-    <div v-show="!extend" >
+    <div v-show="!extend" :key="index" v-for="(Trips, index) in Trips">
       <div class="flex gap-6 items-center">
         <p class="w-14"></p>
         <div class="h-4 w-1 mx-1.5 bg-neutral-900 rounded-full relative">
@@ -53,12 +53,27 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default ({
   props: ['trip'],
   data() {
     return {
       extend: false,
     };
+  },
+  methods: {
+    fetchTrips() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetch_trips',
+      }).then((response) => {
+        this.Trips = response.data;
+        console.log(response.data);
+      });
+    },
+  },
+  mounted() {
+    this.fetchTrips();
   },
 });
 </script>

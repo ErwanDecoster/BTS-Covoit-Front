@@ -30,7 +30,7 @@ export default {
     return {
       Trips: [
         {
-          startingTime: '12h00',
+          startingTime: '',
           startingPoint: 'Vienne',
           driver: 'Erwan',
           vehicle: 'Clio 2',

@@ -9,19 +9,32 @@
         <p v-show="!allVehiclesForUser" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Attention vous n'avez pas encore de vehicule enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full text-white font-bold">Crée un vehicule</router-link></p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="date_of_travel">Date de départ : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="date" name="date_of_travel" id="date_of_travel">
+          <input v-model="date_of_travel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="date" name="date_of_travel" id="date_of_travel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="houre_of_travel">Heure de départ : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="houre_of_travel" id="houre_of_travel">
+          <input v-model="houre_of_travel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="houre_of_travel" id="houre_of_travel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Point de départ : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="starting_point" id="starting_point">
+          <input v-model="starting_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" type="text" name="starting_point" id="starting_point">
+        <!-- <div class="autocomplete-here-suggestions-container" v-if="suggestionsHere.length">
+          <ul>
+            <li v-for="suggestion in suggestionsHere" :key="suggestion.id">
+              <span v-on:click="onClickSuggestHere(suggestion)">{{ suggestion.lib }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" v-if="suggestionSelected != ''">
+          <h5>
+            Vous venez de sélectionner la ville suivante: <br>
+            <b><i>{{ suggestionSelected }}</i></b>
+          </h5>
+        </div> -->
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="end_point" id="end_point">
+          <input v-model="end_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="end_point" id="end_point">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="vehicle">Vehicule : </label>
