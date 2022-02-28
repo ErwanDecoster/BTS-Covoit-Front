@@ -14,7 +14,41 @@
   <div class="max-w-sm mx-auto relative h-screen absolute inset-0 px-2">
     <router-view/>
   </div>
+  <div id="App">
+    <div id="Nav">
+      <router-link v-if="authenticated" to="/searchtrip" v-on:click="logout()" replace>Logout</router-link>
+    </div>
+  <router-view @authenticated="setAuthenticated" />
+    </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      authenticated: false,
+      mockAccount: {
+        tel: '0777117198',
+        password: 'Password',
+      },
+    };
+  },
+  mounted() {
+    if (!this.authenticated) {
+      this.$router.replace({ name: 'Login' });
+    }
+  },
+  methods: {
+    setAuthenticated(status) {
+      this.authenticated = status;
+    },
+    logout() {
+      this.authenticated = false;
+    },
+  },
+};
+</script>
 
 <style>
 #app {

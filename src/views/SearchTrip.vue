@@ -26,6 +26,12 @@
       </form>
     </div>
   </div>
+  <div Id="Secure">
+    <h1>Secure Area</h1>
+      <p>
+        This Is A Secure Area
+      </p>
+  </div>
   <navbar/>
 </template>
 <script>
@@ -33,5 +39,9 @@ import Navbar from '@/components/Navbar.vue';
 
 export default {
   components: { Navbar },
+  Name: 'Secure',
+  data() {
+    return {};
+  },
 };
 </script>
