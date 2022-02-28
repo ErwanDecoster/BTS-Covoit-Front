@@ -6,6 +6,7 @@
       </h1>
       <form class="flex flex-col gap-4 ">
         <h2 class="text-2xl font-bold m-6">Créer un intinéraire :</h2>
+        <p v-show="!allVehiclesForUser" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Attention vous n'avez pas encore de vehicule enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full text-white font-bold">Crée un vehicule</router-link></p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="date_of_travel">Date de départ : </label>
           <input v-model="date_of_travel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="date" name="date_of_travel" id="date_of_travel">
@@ -37,7 +38,11 @@
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="vehicle">Vehicule : </label>
-          <input v-model="vehicle" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle" id="vehicle">
+          <select v-show="allVehiclesForUser != ''" v-model="vehicle" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="" id="">
+            <option v-for="vehicle in allVehiclesForUser" v-bind:key="vehicle" :value="vehicle.id_vehicles">{{ vehicle.vehicle_name }} - {{ vehicle.color }}</option>
+          </select>
+          <p v-show="!allVehiclesForUser" class="text-red-500 text-left">Aucun vehicule n'est enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full font-bold">Crée un vehicule</router-link></p>
+          <!-- <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle" id="vehicle"> -->
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
       </form>
@@ -45,76 +50,6 @@
   </div>
   <navbar/>
 </template>
-<!--<script>
-import Navbar from '@/components/Navbar.vue';
-/* import axios from 'axios'; */
-
-export default {
-  components: { Navbar },
-  el: '#app-autocomplete-here',
-  data() {
-    /* return {
-      CreateTrip: '',
-    }; */
-    return {
-      here_id: '', // Important ! Permet de vous identifier avec l'API
-      here_code: '', // Important ! Permet de vous identifier avec l'API
-      inputCity: '', // Valeur du champ 'Ville'
-      suggestionsHere: [], // Tableau qui contiendra les suggestions Here
-      suggestionSelected: '', // Ville & Code postal sélectionnés
-    };
-  },
-  methods: {
-    /* fetchCreateTrip() {
-      axios.get('http://localhost/actions.php', {
-        action: 'fetch_create_trip',
-      }).then((response) => {
-        this.CreateTrip = response.data;
-        console.log(response.data);
-      });
-    }, */
-    onKeypressCity() {
-      const value = this.inputCity;
-      if (value !== undefined && value !== '') {
-      // Call API Suggestions de HERE pour réécupérer les informations
-        fetch(`https://autocomplete.geocoder.api.here.com/6.2/suggest.json?resultType=city&app_id=${this.jxvUjVVY0Mq4cKAssQnL}&app_code=${this.SGWVLerwga6jzJsKKdZpAA}&maxresults=15&query=${value}&resultType=city&country=FRA`)
-          .then((result) => result.json())
-          .then((result) => {
-            const datas = [];
-            if (result.suggestions && result.suggestions.length > 0) {
-              result.suggestions.array.forEach((sug) => {
-                if (sug.address.postalCode !== undefined && sug.address.city !== undefined) {
-                  datas.push({
-                    lib: `${sug.address.postalCode}${''}${sug.address.city}`,
-                    cp: sug.address.postalCode ? sug.address.postalCode : '',
-                    city: sug.address.city ? sug.address.city : '',
-                  });
-                }
-              });
-            }
-            this.suggestionsHere = datas;
-          },
-          (error) => {
-            console.error(error);
-          });
-      } else {
-        this.suggestionsHere = [];
-      }
-    },
-    onClickSuggestHere(suggestion) {
-      // On renseigne la ville sélectionner
-      this.suggestionSelected = suggestion.lib;
-      // On reset la recherche
-      this.inputCity = '';
-      this.suggestionsHere = [];
-    },
-  },
-  /* mounted() {
-    this.fetchCreateTrip();
-  }, */
-};
-</script>-->
-
 <script>
 import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
@@ -123,21 +58,25 @@ export default {
   components: { Navbar },
   data() {
     return {
-      CreateTrip: '',
+      vehicle: '',
+      allVehiclesForUser: '',
     };
   },
   methods: {
-    fetchCreateTrip() {
-      axios.get('http://localhost/actions.php', {
-        action: 'fetch_create_trip',
+    fetchAllVehiclesForUser() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_vehicles_for_user',
+        tel: '0625306813',
       }).then((response) => {
-        this.CreateTrip = response.data;
+        if (response.data !== ' ') {
+          this.allVehiclesForUser = response.data;
+        }
         console.log(response.data);
       });
     },
   },
   mounted() {
-    this.fetchCreateTrip();
+    this.fetchAllVehiclesForUser();
   },
 };
 </script>

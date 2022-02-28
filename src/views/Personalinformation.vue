@@ -1,5 +1,5 @@
 <template>
-  <div id="registration" class="h-full flex flex-col">
+  <div id="" class="h-full flex flex-col">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -42,6 +42,8 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
+import axios from 'axios';
+
 import axios from 'axios';
 
 export default {
