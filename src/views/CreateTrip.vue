@@ -13,28 +13,17 @@
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="houre_of_travel">Heure de départ : </label>
-          <input v-model="houre_of_travel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="houre_of_travel" id="houre_of_travel">
+          <input v-model="houre_of_travel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="" id="">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Point de départ : </label>
-          <input v-model="starting_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" type="text" name="starting_point" id="starting_point">
-        <!-- <div class="autocomplete-here-suggestions-container" v-if="suggestionsHere.length">
-          <ul>
-            <li v-for="suggestion in suggestionsHere" :key="suggestion.id">
-              <span v-on:click="onClickSuggestHere(suggestion)">{{ suggestion.lib }}</span>
-            </li>
-          </ul>
-        </div>
-        <div class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" v-if="suggestionSelected != ''">
-          <h5>
-            Vous venez de sélectionner la ville suivante: <br>
-            <b><i>{{ suggestionSelected }}</i></b>
-          </h5>
-        </div> -->
+          <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" name="starting_point" id="starting_point">
+            <option v-bind:key="city" v-for="city in allCity">{{ city }}</option>
+          </select>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
-          <input v-model="end_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="end_point" id="end_point">
+          <select v-model="end_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="end_point" id="end_point"></select>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="vehicle">Vehicule : </label>
@@ -42,7 +31,6 @@
             <option v-for="vehicle in allVehiclesForUser" v-bind:key="vehicle" :value="vehicle.id_vehicles">{{ vehicle.vehicle_name }} - {{ vehicle.color }}</option>
           </select>
           <p v-show="!allVehiclesForUser" class="text-red-500 text-left">Aucun vehicule n'est enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full font-bold">Crée un vehicule</router-link></p>
-          <!-- <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle" id="vehicle"> -->
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
       </form>
@@ -60,6 +48,7 @@ export default {
     return {
       vehicle: '',
       allVehiclesForUser: '',
+      allCity: '',
     };
   },
   methods: {
@@ -74,9 +63,18 @@ export default {
         console.log(response.data);
       });
     },
+    fetchAllCity() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_city',
+      }).then((response) => {
+        this.allCity = response.data;
+        console.log(response.data);
+      });
+    },
   },
   mounted() {
     this.fetchAllVehiclesForUser();
+    this.fetchAllCity();
   },
 };
 </script>
