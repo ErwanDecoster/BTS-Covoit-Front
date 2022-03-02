@@ -15,9 +15,9 @@
     <router-view/>
   </div>
   <div id="App">
-    <div id="Nav">
+    <!-- <div id="Nav">
       <router-link v-if="authenticated" to="/searchtrip" v-on:click="logout()" replace>Logout</router-link>
-    </div>
+    </div> -->
   <router-view @authenticated="setAuthenticated" />
     </div>
 </template>
@@ -30,22 +30,22 @@ export default {
       authenticated: false,
       mockAccount: {
         tel: '0777117198',
-        password: 'Password',
+        password: '1234',
       },
     };
   },
   mounted() {
-    if (!this.authenticated) {
-      this.$router.replace({ name: 'Login' });
+    if (this.authenticated) {
+      this.$router.push({ path: '/' });
     }
   },
   methods: {
     setAuthenticated(status) {
       this.authenticated = status;
     },
-    logout() {
+    /* logout() {
       this.authenticated = false;
-    },
+    }, */
   },
 };
 </script>

@@ -8,7 +8,7 @@
         <h2 class="text-2xl font-bold m-6">Connection</h2>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="telephone">Telephone : </label>
-          <input V-Model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="telephone" id="tel">
+          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="telephone" id="tel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="pass">Mot de passe : </label>
@@ -34,10 +34,10 @@ export default {
   },
   methods: {
     login() {
-      if (this.input.tel !== '' && this.input.password !== '') {
-        if (this.input.tel === this.$parent.mockAccount.tel && this.input.password === this.$parent.mockAccount.password) {
+      if (this.tel !== '' && this.password !== '') {
+        if (this.tel === this.mockAccount.tel && this.password === this.mockAccount.password) {
           this.$emit('Authenticated', true);
-          this.$router.replace({ name: 'SearchTrip' });
+          this.$router.push({ name: '/' });
         } else {
           console.log('Username or password is incorrect');
         }
