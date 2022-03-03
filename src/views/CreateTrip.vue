@@ -18,7 +18,7 @@
         <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Point de départ : </label>
           <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" name="starting_point" id="starting_point">
-            <option v-bind:key="city" v-for="city in allCity">{{ city }}</option>
+            <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city }}</option>
           </select>
         </div>
         <div class="grid gap-2">
