@@ -6,7 +6,7 @@
       </h1>
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
-      <form action="@/php/forgot.php" method="POST" class="flex flex-col gap-4">
+      <form class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold my-6">Modification du mot de passe :</h2>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Mot de passe actuel : </label>
@@ -22,7 +22,7 @@
         </div>
       </form>
       <div class="grid gap-4">
-        <button @click="submit" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Sauvegarder</button>
+        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Sauvegarder</button>
         <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
       </div>
     </div>
@@ -46,6 +46,9 @@ export default {
     fetchEditPassword() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_edit_password',
+        old_password: this.old_password,
+        new_password: this.new_password,
+        new_password_confirmed: this.new_password_confirmed,
       }).then((response) => {
         this.new_password = response.data;
         console.log(response.data);

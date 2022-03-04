@@ -1,5 +1,5 @@
 <template>
-  <div id="createTrip" class="">
+  <div id="createTrip" class="h-full flex flex-col">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
