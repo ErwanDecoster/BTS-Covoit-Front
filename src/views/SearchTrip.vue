@@ -16,32 +16,54 @@
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Depart : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="starting_point" id="starting_point">
+          <!--<input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="starting_point" id="starting_point">-->
+          <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="end_point" id="end_point">
+             <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city.city }}</option>
+          </select>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="end_point">Arriver : </label>
-          <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="end_point" id="end_point">
+          <!--<input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="end_point" id="end_point">-->
+          <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="end_point" id="end_point">
+             <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city.city }}</option>
+          </select>
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Rechercher</button>
       </form>
     </div>
   </div>
-  <div id="Secure">
+  <!--<div id="Secure">
     <h1>Secure Area</h1>
       <p>
         This Is A Secure Area
       </p>
-  </div>
+  </div>-->
   <navbar/>
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
+import axios from 'axios';
 
 export default {
   components: { Navbar },
   name: 'Secure',
   data() {
-    return {};
+    return {
+      allCity: '',
+    };
+  },
+  methods: {
+    fetchAllCity() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_city',
+      }).then((response) => {
+        this.allCity = response.data;
+        console.log(response.data);
+      });
+    },
+  },
+  mounted() {
+    this.fetchAllCity();
   },
 };
 </script>

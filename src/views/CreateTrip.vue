@@ -18,12 +18,14 @@
         <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Point de départ : </label>
           <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" name="starting_point" id="starting_point">
-            <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city }}</option>
+            <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city.city }}</option>
           </select>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
-          <select v-model="end_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="end_point" id="end_point"></select>
+          <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="end_point" id="end_point">
+             <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city.city }}</option>
+          </select>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="vehicle">Vehicule : </label>
