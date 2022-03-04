@@ -5,7 +5,7 @@
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
       <form class="flex flex-col gap-4 ">
-        <h2 class="text-2xl font-bold m-6">Créer un intinéraire :</h2>
+        <h2 class="text-2xl font-bold m-6">Créer un itinéraire :</h2>
         <p v-show="!allVehiclesForUser" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Attention vous n'avez pas encore de vehicule enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full text-white font-bold">Crée un vehicule</router-link></p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="date_of_travel">Date de départ : </label>

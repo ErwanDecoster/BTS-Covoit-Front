@@ -4,7 +4,7 @@
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
-      <form @submit="Registration" class="flex flex-col gap-4" action="inscription_traitement.php" method="post">
+      <form @submit="AddRegistration" class="flex flex-col gap-4" action="inscription_traitement.php" method="post">
         <h2 class="text-2xl font-bold m-6">Inscription</h2>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="name">Nom : </label>
@@ -36,7 +36,6 @@
 import axios from 'axios';
 
 export default {
-  name: 'registration',
   data() {
     return {
       surname: '',
@@ -46,12 +45,13 @@ export default {
       password_confirmed: '',
     };
   },
-  computed: {
-  },
   methods: {
+    AddRegistration() {
+      this.fetchNewRegistration();
+    },
     fetchNewRegistration() {
       axios.post('http://localhost/actions.php', {
-        action: 'fetch_new_registration',
+        action: 'new_registration',
         surname: this.surname,
         name: this.name,
         tel: this.tel,
@@ -59,12 +59,12 @@ export default {
         password_confirmed: this.password_confirmed,
       }).then((response) => {
         console.log(response);
-        this.$router.push({ path: '/searchtrip' });
+        this.$router.push({ path: '/' });
       });
     },
   },
-  mounted() {
+  /* mounted() {
     this.fetchNewRegistration();
-  },
+  }, */
 };
 </script>
