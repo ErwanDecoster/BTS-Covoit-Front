@@ -4,7 +4,7 @@
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
-      <form @submit="AddLogin" class="flex flex-col gap-4">
+      <form @submit.stop.prevent="AddLogin" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Connection</h2>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="telephone">Téléphone : </label>
@@ -13,7 +13,6 @@
         <div class="grid gap-2">
           <label class="text-left font-bold" for="pass">Mot de passe : </label>
           <input v-model="password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="pass" id="password">
-          <!--<p v-show="!checkRegistration" class="text-red-500 text-left">Vous êtes pas inscrit</p>-->
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Se connecter</button>
         <router-link to="/registration" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Inscription</router-link>
@@ -28,7 +27,6 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      checkRegistration: '',
       tel: '',
       password: '',
     };
@@ -45,14 +43,12 @@ export default {
           password: this.password,
         }).then((response) => {
           console.log(response);
-          // this.$router.push({ path: '/searchtrip' });
+          this.$router.push({ path: '/searchtrip' });
         });
       } else {
-        console.log('Veuillez renseigner les champs');
+        console.log('Les champs sont vide');
       }
     },
   },
 };
-
-// vus js redirection form
 </script>
