@@ -36,6 +36,7 @@
 import axios from 'axios';
 
 export default {
+  name: 'Registration',
   data() {
     return {
       surname: '',
@@ -46,7 +47,27 @@ export default {
     };
   },
   methods: {
-    AddRegistration() {
+    async AddRegistration() {
+      const response = await axios.post('http://localhost/actions.php', {
+        action: 'new_registration',
+        surname: this.surname,
+        name: this.name,
+        tel: this.tel,
+        password: this.password,
+        password_confirmed: this.password_confirmed,
+      });
+
+      console.log(response);
+      this.$router.push({ path: '/' });
+      /* .then((response) => {
+          console.log(response);
+          this.$router.push({ path: '/' });
+        })
+        .catch((error) => {
+          console.log(error);
+        }); */
+    },
+    /* AddRegistration() {
       this.fetchNewRegistration();
     },
     fetchNewRegistration() {
@@ -61,7 +82,7 @@ export default {
         console.log(response);
         this.$router.push({ path: '/' });
       });
-    },
+    }, */
   },
 };
 </script>

@@ -47,6 +47,15 @@ import axios from 'axios';
 export default {
   components: { Navbar },
   name: 'Secure',
+  async create() {
+    const response = await axios.get('user', {
+      headers: {
+        autorization: `test ${localStorage.getItem('token')}`,
+      },
+    });
+
+    console.log(response);
+  },
   data() {
     return {
       allCity: '',

@@ -25,6 +25,7 @@
 import axios from 'axios';
 
 export default {
+  name: 'Login',
   data() {
     return {
       tel: '',
@@ -32,9 +33,17 @@ export default {
     };
   },
   methods: {
-    AddLogin() {
+    async AddLogin() {
       this.fetchNewLogin();
+      const response = await axios.post('login', {
+        tel: this.tel,
+        password: this.password,
+      });
+      localStorage.setItem('token', response.data.token);
     },
+    /* AddLogin() {
+      this.fetchNewLogin();
+    }, */
     fetchNewLogin() {
       if (this.tel !== '' && this.password !== '') {
         axios.post('http://localhost/actions.php', {
