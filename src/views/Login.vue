@@ -33,17 +33,18 @@ export default {
     };
   },
   methods: {
-    async AddLogin() {
+    /* async AddLogin() {
       this.fetchNewLogin();
-      const response = await axios.post('login', {
+      const response = await axios.post('http://localhost/actions.php', {
+        action: 'fetch_login',
         tel: this.tel,
         password: this.password,
       });
       localStorage.setItem('token', response.data.token);
-    },
-    /* AddLogin() {
-      this.fetchNewLogin();
     }, */
+    AddLogin() {
+      this.fetchNewLogin();
+    },
     fetchNewLogin() {
       if (this.tel !== '' && this.password !== '') {
         axios.post('http://localhost/actions.php', {

@@ -46,43 +46,38 @@ export default {
       password_confirmed: '',
     };
   },
-  methods: {
-    async AddRegistration() {
-      const response = await axios.post('http://localhost/actions.php', {
-        action: 'new_registration',
-        surname: this.surname,
-        name: this.name,
-        tel: this.tel,
-        password: this.password,
-        password_confirmed: this.password_confirmed,
-      });
-
+  /* watch: {
+    surname(newSurname) {
+      localStorage.surname = newSurname;
+    },
+    name(newName) {
+      localStorage.name = newName;
+    },
+    tel(newTel) {
+      localStorage.tel = newTel;
+    },
+    password(newPassword) {
+      localStorage.password = newPassword;
+    },
+    password_confirmed(newPasswordConfirmed) {
+      localStorage.password_confirmed = newPasswordConfirmed;
+    },
+  }, */
+  AddRegistration() {
+    this.fetchNewRegistration();
+  },
+  fetchNewRegistration() {
+    axios.post('http://localhost/actions.php', {
+      action: 'new_registration',
+      surname: this.surname,
+      name: this.name,
+      tel: this.tel,
+      password: this.password,
+      password_confirmed: this.password_confirmed,
+    }).then((response) => {
       console.log(response);
       this.$router.push({ path: '/' });
-      /* .then((response) => {
-          console.log(response);
-          this.$router.push({ path: '/' });
-        })
-        .catch((error) => {
-          console.log(error);
-        }); */
-    },
-    /* AddRegistration() {
-      this.fetchNewRegistration();
-    },
-    fetchNewRegistration() {
-      axios.post('http://localhost/actions.php', {
-        action: 'new_registration',
-        surname: this.surname,
-        name: this.name,
-        tel: this.tel,
-        password: this.password,
-        password_confirmed: this.password_confirmed,
-      }).then((response) => {
-        console.log(response);
-        this.$router.push({ path: '/' });
-      });
-    }, */
+    });
   },
 };
 </script>

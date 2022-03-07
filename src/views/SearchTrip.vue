@@ -32,12 +32,6 @@
       </form>
     </div>
   </div>
-  <!--<div id="Secure">
-    <h1>Secure Area</h1>
-      <p>
-        This Is A Secure Area
-      </p>
-  </div>-->
   <navbar/>
 </template>
 <script>
@@ -46,7 +40,7 @@ import axios from 'axios';
 
 export default {
   components: { Navbar },
-  name: 'Secure',
+  props: ['user'],
   async create() {
     const response = await axios.get('user', {
       headers: {

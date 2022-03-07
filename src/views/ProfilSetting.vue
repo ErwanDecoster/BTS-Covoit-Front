@@ -14,7 +14,7 @@
           <router-link to="/Trip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Historisque de voyage</router-link>
         </div>
       </div>
-      <button v-on:click="logout()" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Me deconnecter</button>
+      <button @click="logout()" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Me deconnecter</button>
     </div>
   </div>
   <navbar/>
@@ -24,30 +24,15 @@ import Navbar from '@/components/Navbar.vue';
 
 export default {
   components: { Navbar },
-  // name: 'App',
   data() {
     return {
       authenticated: true,
-      /* authenticated: false,
-      mockAccount: {
-        tel: '0777117198',
-        password: '1234',
-      }, */
     };
   },
-  /* mounted() {
-    if (!this.authenticated) {
-      this.$router.push({ path: '/searchtrip' });
-    }
-  }, */
   methods: {
-    /* setAuthenticated(status) {
-      this.authenticated = status;
-    }, */
     logout() {
-      if (this.authenticated) {
-        this.$router.push({ path: '/' });
-      }
+      localStorage.removeItem('token');
+      this.$router.push({ path: '/' });
     },
   },
 };
