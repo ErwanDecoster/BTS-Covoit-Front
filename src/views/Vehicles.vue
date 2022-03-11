@@ -45,6 +45,9 @@ export default {
   },
   mounted() {
     this.fetchAllVehiclesForUser();
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>

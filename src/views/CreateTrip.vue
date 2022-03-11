@@ -46,7 +46,6 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
-
 export default {
   components: { Navbar },
   data() {
@@ -127,6 +126,9 @@ export default {
     this.fetchAllVehiclesForUser();
     this.fetchAllCity();
     // console.log(this.allCityFiltred(this.words));
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>

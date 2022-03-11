@@ -55,6 +55,9 @@ export default {
     this.fetchallTripForUser();
     // console.log(this.formatNum('0625306813'));
     // console.log(this.formatNum('725306813'));
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>

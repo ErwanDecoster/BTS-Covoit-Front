@@ -14,7 +14,7 @@
           <router-link to="/Trip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Historisque de voyage</router-link>
         </div>
       </div>
-      <button class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Me deconnecter</button>
+      <button @click="logout()" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Me deconnecter</button>
     </div>
   </div>
   <navbar/>
@@ -24,5 +24,21 @@ import Navbar from '@/components/Navbar.vue';
 
 export default {
   components: { Navbar },
+  data() {
+    return {
+      authenticated: true,
+    };
+  },
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.push({ path: '/' });
+    },
+  },
+  mounted() {
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
+  },
 };
 </script>
