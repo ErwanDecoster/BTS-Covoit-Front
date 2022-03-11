@@ -23,6 +23,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Trip from '@/components/Trip.vue';
+import axios from 'axios';
 
 export default {
   components: { Navbar, Trip },
@@ -72,6 +73,21 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    fetchallTripForUser() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_trip_for_user',
+        tel: '0625306813',
+      }).then((response) => {
+        if (response.data !== ' ') {
+          this.Trips = response.data;
+        }
+      });
+    },
+  },
+  mounted() {
+    this.fetchallTripForUser();
   },
 };
 </script>
