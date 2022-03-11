@@ -4,7 +4,6 @@
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
-    </div>
       <form class="flex flex-col gap-4 ">
         <h2 class="text-2xl font-bold m-6">Rechercher un voyage</h2>
         <div class="grid gap-2">
@@ -16,41 +15,36 @@
           <input class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="houre_of_travel" id="houre_of_travel">
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="starting_point">Depart : </label>
-          <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="end_point" id="end_point">
-             <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city.city }}</option>
-          </select>
+          <label class="text-left font-bold" for="starting_point">Point de départ : </label>
+          <input v-model="starting_point" @input="allCityStartingPointFiltred" autocomplete="off" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" list="starting_point_list" name="starting_point" id="starting_point">
+          <datalist id="starting_point_list">
+            <option v-for="city in sugestedCityStartingPoint" :key="city" :value="city.ville_nom_reel">{{ city.ville_nom_reel }} - {{ city.ville_code_postal }}</option>
+          </datalist>
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="end_point">Arriver : </label>
-          <select v-model="city" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="end_point" id="end_point">
-             <option v-for="city in allCity" v-bind:key="city" :value="city.id_city">{{ city.city }}</option>
-          </select>
+          <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
+          <input v-model="end_point" @input="allCityEndPointFiltred" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" list="end_point_list" name="end_point" id="end_point">
+          <datalist id="end_point_list">
+            <option v-for="city in sugestedCityEndPoint" :key="city" :value="city.ville_nom_reel">{{ city.ville_nom_reel }} - {{ city.ville_code_postal }}</option>
+          </datalist>
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Rechercher</button>
       </form>
+    </div>
   </div>
   <navbar/>
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
-
 export default {
   components: { Navbar },
-  props: ['user'],
-  async create() {
-    const response = await axios.get('user', {
-      headers: {
-        autorization: `test ${localStorage.getItem('token')}`,
-      },
-    });
-
-    console.log(response);
-  },
   data() {
     return {
-      allCity: '',
+      starting_point: '',
+      end_point: '',
+      sugestedCityStartingPoint: '',
+      sugestedCityEndPoint: '',
     };
   },
   methods: {
@@ -58,9 +52,32 @@ export default {
       axios.post('http://localhost/actions.php', {
         action: 'fetchall_city',
       }).then((response) => {
-        this.allCity = response.data;
-        console.log(response.data);
+        if (response.data !== ' ') {
+          this.allCity = response.data;
+        }
       });
+    },
+    allCityStartingPointFiltred() {
+      const citys = this.allCity;
+      const starting = this.starting_point.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+      // console.log(citys);
+      // console.log('executed');
+      const result = citys.filter((city) => city.ville_nom_reel.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .startsWith(starting));
+      // console.log(result);
+      this.sugestedCityStartingPoint = result.slice(0, 20);
+      return result;
+    },
+    allCityEndPointFiltred() {
+      const citys = this.allCity;
+      const end = this.end_point.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+      // console.log(citys);
+      // console.log('executed');
+      const result = citys.filter((city) => city.ville_nom_reel.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .startsWith(end));
+      // console.log(result);
+      this.sugestedCityEndPoint = result.slice(0, 20);
+      return result;
     },
   },
   mounted() {
