@@ -37,9 +37,6 @@
           <p v-show="!allVehiclesForUser" class="text-red-500 text-left">Aucun vehicule n'est enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full font-bold">Crée un vehicule</router-link></p>
           <!-- <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle" id="vehicle"> -->
         </div>
-        <ul>
-        </ul>
-        <p>{{ date_of_travel }} - {{ houre_of_travel }} - {{ houre_of_travel }} - {{ end_point }} - {{ vehicle }}</p>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
       </form>
     </div>
@@ -59,7 +56,6 @@ export default {
       starting_point: '',
       end_point: '',
       id_vehicles: '',
-      // -
       allVehiclesForUser: '',
       allCity: '',
       sugestedCityStartingPoint: '',
@@ -75,7 +71,6 @@ export default {
         if (response.data !== ' ') {
           this.allVehiclesForUser = response.data;
         }
-        // console.log(response.data);
       });
     },
     fetchAllCity() {
@@ -102,6 +97,7 @@ export default {
         if (response.data !== ' ') {
           console.log(response.data);
         }
+        this.$router.push({ path: '/Trip' });
       });
     },
     allCityStartingPointFiltred() {

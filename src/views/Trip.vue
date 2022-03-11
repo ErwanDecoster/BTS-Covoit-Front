@@ -29,49 +29,7 @@ export default {
   components: { Navbar, Trip },
   data() {
     return {
-      Trips: [
-        {
-          startingTime: '',
-          startingPoint: 'Vienne',
-          driver: 'Erwan',
-          vehicle: 'Clio 2',
-          vehicleColor: 'Rouge',
-          img: 'erwan_profil_picture',
-          stars: 4,
-          paths: [
-            {
-              startingTime: '12h30',
-              startingPoint: 'Lyon',
-              people: 'Lyna',
-            },
-            {
-              startingTime: '13h00',
-              startingPoint: 'Marseille',
-              people: 'Ludivine',
-            },
-          ],
-          endPoint: 'Paris',
-          endTime: '14h00',
-        },
-        {
-          startingTime: '12h00',
-          startingPoint: 'Vienne',
-          driver: 'Erwan',
-          vehicle: 'Clio 2',
-          vehicleColor: 'Rouge',
-          img: 'erwan_profil_picture',
-          stars: 4,
-          paths: [
-            {
-              startingTime: '12h30',
-              startingPoint: 'Lyon',
-              people: 'Lyna',
-            },
-          ],
-          endPoint: 'Paris',
-          endTime: '14h00',
-        },
-      ],
+      Trips: [],
     };
   },
   methods: {
@@ -85,9 +43,18 @@ export default {
         }
       });
     },
+    formatNum(num) {
+      let number = num;
+      if (num.length < 10) {
+        number = `0${num}`;
+      }
+      return number.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
+    },
   },
   mounted() {
     this.fetchallTripForUser();
+    // console.log(this.formatNum('0625306813'));
+    // console.log(this.formatNum('725306813'));
   },
 };
 </script>
