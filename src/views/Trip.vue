@@ -24,6 +24,7 @@
 import Navbar from '@/components/Navbar.vue';
 import Trip from '@/components/Trip.vue';
 import axios from 'axios';
+
 export default {
   components: { Navbar, Trip },
   data() {
