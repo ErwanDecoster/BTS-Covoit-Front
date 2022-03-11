@@ -4,7 +4,7 @@
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
-      <form class="flex flex-col gap-4 ">
+      <form class="flex flex-col gap-4 " @submit.stop.prevent="CreateTrip">
         <h2 class="text-2xl font-bold m-6">Créer un intinéraire :</h2>
         <p v-show="!allVehiclesForUser" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Attention vous n'avez pas encore de vehicule enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full text-white font-bold">Crée un vehicule</router-link></p>
         <div class="grid gap-2">
@@ -17,28 +17,21 @@
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Point de départ : </label>
-          <input v-model="starting_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" type="text" name="starting_point" id="starting_point">
-        <!-- <div class="autocomplete-here-suggestions-container" v-if="suggestionsHere.length">
-          <ul>
-            <li v-for="suggestion in suggestionsHere" :key="suggestion.id">
-              <span v-on:click="onClickSuggestHere(suggestion)">{{ suggestion.lib }}</span>
-            </li>
-          </ul>
-        </div>
-        <div class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" v-if="suggestionSelected != ''">
-          <h5>
-            Vous venez de sélectionner la ville suivante: <br>
-            <b><i>{{ suggestionSelected }}</i></b>
-          </h5>
-        </div> -->
+          <input v-model="starting_point" @input="allCityStartingPointFiltred" autocomplete="off" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg form-control" list="starting_point_list" name="starting_point" id="starting_point">
+          <datalist id="starting_point_list">
+            <option v-for="city in sugestedCityStartingPoint" :key="city" :value="city.ville_nom_reel">{{ city.ville_nom_reel }} - {{ city.ville_code_postal }}</option>
+          </datalist>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
-          <input v-model="end_point" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="end_point" id="end_point">
+          <input v-model="end_point" @input="allCityEndPointFiltred" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" list="end_point_list" name="end_point" id="end_point">
+          <datalist id="end_point_list">
+            <option v-for="city in sugestedCityEndPoint" :key="city" :value="city.ville_nom_reel">{{ city.ville_nom_reel }} - {{ city.ville_code_postal }}</option>
+          </datalist>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="vehicle">Vehicule : </label>
-          <select v-show="allVehiclesForUser != ''" v-model="vehicle" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="" id="">
+          <select v-show="allVehiclesForUser != ''" v-model="id_vehicles" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="" id="">
             <option v-for="vehicle in allVehiclesForUser" v-bind:key="vehicle" :value="vehicle.id_vehicles">{{ vehicle.vehicle_name }} - {{ vehicle.color }}</option>
           </select>
           <p v-show="!allVehiclesForUser" class="text-red-500 text-left">Aucun vehicule n'est enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full font-bold">Crée un vehicule</router-link></p>
@@ -58,8 +51,15 @@ export default {
   components: { Navbar },
   data() {
     return {
-      vehicle: '',
+      date_of_travel: '',
+      houre_of_travel: '',
+      starting_point: '',
+      end_point: '',
+      id_vehicles: '',
       allVehiclesForUser: '',
+      allCity: '',
+      sugestedCityStartingPoint: '',
+      sugestedCityEndPoint: '',
     };
   },
   methods: {
@@ -71,12 +71,62 @@ export default {
         if (response.data !== ' ') {
           this.allVehiclesForUser = response.data;
         }
-        console.log(response.data);
       });
+    },
+    fetchAllCity() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_city',
+      }).then((response) => {
+        if (response.data !== ' ') {
+          this.allCity = response.data;
+        }
+      });
+    },
+    CreateTrip() {
+      axios.post('http://localhost/actions.php', {
+        action: 'create_trip',
+        starting_date: this.date_of_travel,
+        departure_time: this.houre_of_travel,
+        id_vehicles: this.id_vehicles,
+        id_user: 1,
+        id_end_point_city: this.allCity.find((city) => city.ville_nom_reel === this.end_point).ville_id,
+        id_starting_point_city: this.allCity.find((city) => city.ville_nom_reel === this.starting_point).ville_id,
+        // id_end_point_city: this.end_point,
+        // id_starting_point_city: this.starting_point,
+      }).then((response) => {
+        if (response.data !== ' ') {
+          console.log(response.data);
+        }
+        this.$router.push({ path: '/Trip' });
+      });
+    },
+    allCityStartingPointFiltred() {
+      const citys = this.allCity;
+      const starting = this.starting_point.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+      // console.log(citys);
+      // console.log('executed');
+      const result = citys.filter((city) => city.ville_nom_reel.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .startsWith(starting));
+      // console.log(result);
+      this.sugestedCityStartingPoint = result.slice(0, 20);
+      return result;
+    },
+    allCityEndPointFiltred() {
+      const citys = this.allCity;
+      const end = this.end_point.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+      // console.log(citys);
+      // console.log('executed');
+      const result = citys.filter((city) => city.ville_nom_reel.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .startsWith(end));
+      // console.log(result);
+      this.sugestedCityEndPoint = result.slice(0, 20);
+      return result;
     },
   },
   mounted() {
     this.fetchAllVehiclesForUser();
+    this.fetchAllCity();
+    // console.log(this.allCityFiltred(this.words));
   },
 };
 </script>
