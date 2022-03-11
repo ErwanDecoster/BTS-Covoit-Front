@@ -77,6 +77,9 @@ export default {
   mounted() {
     this.fetchAllVehiclesForUser();
     this.fetchAllCity();
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>

@@ -31,9 +31,14 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.removeItem('token');
+      localStorage.clear();
       this.$router.push({ path: '/' });
     },
+  },
+  mounted() {
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>

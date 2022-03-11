@@ -73,5 +73,10 @@ export default {
       ],
     };
   },
+  mounted() {
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
+  },
 };
 </script>

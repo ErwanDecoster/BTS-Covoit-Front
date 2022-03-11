@@ -61,6 +61,9 @@ export default {
     },
     mounted() {
       this.fetchEditPassword();
+      if (!localStorage.tel) {
+        this.$router.push({ path: '/' });
+      }
     },
   },
 };

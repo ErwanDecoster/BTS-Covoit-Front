@@ -89,6 +89,9 @@ export default {
   },
   mounted() {
     this.fetchVehiclesForUser();
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>

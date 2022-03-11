@@ -26,7 +26,7 @@
           <label class="text-left font-bold" for="new_retipe_password">Confirmation de mot de passe : </label>
           <input v-model="password_confirmed" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="new_retipe_password" id="new_retipe_password">
         </div>
-        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">S'inscrire</button>
+        <button @click="persist" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">S'inscrire</button>
         <router-link to="/"  class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Connection</router-link>
       </form>
     </div>
@@ -46,38 +46,35 @@ export default {
       password_confirmed: '',
     };
   },
-  /* watch: {
-    surname(newSurname) {
-      localStorage.surname = newSurname;
+  methods: {
+    persist() {
+      localStorage.surname = this.surname;
+      localStorage.name = this.name;
+      localStorage.tel = this.tel;
+      localStorage.password = this.password;
+      localStorage.password_confirmed = this.password_confirmed;
     },
-    name(newName) {
-      localStorage.name = newName;
+    AddRegistration() {
+      this.addNewRegistration();
     },
-    tel(newTel) {
-      localStorage.tel = newTel;
+    addNewRegistration() {
+      axios.post('http://localhost/actions.php', {
+        action: 'new_registration',
+        surname: this.surname,
+        name: this.name,
+        tel: this.tel,
+        password: this.password,
+        password_confirmed: this.password_confirmed,
+      }).then((response) => {
+        console.log(response);
+        this.$router.push({ path: '/' });
+      });
     },
-    password(newPassword) {
-      localStorage.password = newPassword;
-    },
-    password_confirmed(newPasswordConfirmed) {
-      localStorage.password_confirmed = newPasswordConfirmed;
-    },
-  }, */
-  AddRegistration() {
-    this.fetchNewRegistration();
   },
-  fetchNewRegistration() {
-    axios.post('http://localhost/actions.php', {
-      action: 'new_registration',
-      surname: this.surname,
-      name: this.name,
-      tel: this.tel,
-      password: this.password,
-      password_confirmed: this.password_confirmed,
-    }).then((response) => {
-      console.log(response);
+  mounted() {
+    if (!localStorage.tel) {
       this.$router.push({ path: '/' });
-    });
+    }
   },
 };
 </script>

@@ -9,22 +9,22 @@
       <form class="flex flex-col gap-4 ">
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
         <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div>
-        <div class="flex relative" :key="index" v-for="(PersonalInformation, index) in PersonalInformation">
-          <p class="grow text-1xl text-left">{{ PersonalInformation.l_name + " " + PersonalInformation.f_name }}</p>
+        <div class="flex relative">
+          <p class="grow text-1xl text-left">{{ PersonalInformation.l_name }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
-        <div class="flex relative" :key="index" v-for="(PersonalInformation, index) in PersonalInformation">
-          <p class="grow text-1xl text-left">{{ "0" + PersonalInformation.tel}}</p>
+        <div class="flex relative">
+          <p class="grow text-1xl text-left">{{ PersonalInformation.f_name }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
-        <div class="flex relative" :key="index" v-for="(PersonalInformation, index) in PersonalInformation">
-          <p class="grow text-1xl text-left">{{ PersonalInformation.password}}</p>
+        <div class="flex relative">
+          <p class="grow text-1xl text-left">{{ PersonalInformation.tel }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
@@ -55,14 +55,20 @@ export default {
     fetchPersonalInformation() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_personal_information',
+        userTel: localStorage.tel,
+        userName: localStorage.name,
+        userSurname: localStorage.surname,
       }).then((response) => {
         this.PersonalInformation = response.data;
-        console.log(response.data);
+        console.log(this.PersonalInformation);
       });
     },
   },
   mounted() {
     this.fetchPersonalInformation();
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>

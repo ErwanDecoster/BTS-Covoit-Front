@@ -17,7 +17,6 @@
           <select v-model="id_motorization" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="" id="">
             <option v-for="row in motorization" v-bind:key="row" :value="row.id_motorization">{{ row.libellet }}</option>
           </select>
-          <!-- <input class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="motorisation" id="motorisation"> -->
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="number_of_place">Nombres de places : </label>
@@ -28,7 +27,6 @@
           <select v-model="color" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="" id="">
             <option v-for="row in VehicleColor" v-bind:key="row" :value="row.color">{{ row.color }}</option>
           </select>
-          <!-- <input v-model="color" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="color" id="color"> -->
         </div>
         <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
       </form>
@@ -87,6 +85,9 @@ export default {
   },
   mounted() {
     this.fetchAllMotorization();
+    if (!localStorage.tel) {
+      this.$router.push({ path: '/' });
+    }
   },
 };
 </script>
