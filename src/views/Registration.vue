@@ -4,6 +4,7 @@
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
+    </div>
       <form @submit.stop.prevent="AddRegistration" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Inscription</h2>
         <div class="grid gap-2">
@@ -29,7 +30,6 @@
         <button @click="persist" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">S'inscrire</button>
         <router-link to="/"  class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Connection</router-link>
       </form>
-    </div>
   </div>
 </template>
 <script>
@@ -72,9 +72,6 @@ export default {
     },
   },
   mounted() {
-    if (!localStorage.tel) {
-      this.$router.push({ path: '/' });
-    }
   },
 };
 </script>
