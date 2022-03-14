@@ -66,21 +66,20 @@ export default {
         new_password_confirmed: this.new_password_confirmed,
         tel: this.tel,
       }).then((response) => {
-        // console.log(response);
-        if (response.data === 'password_confirmed_ok') {
-          this.$router.push({ path: '/Personalinformation' });
+        // if (response.data === 'old_password_ok ') {
+        //   if (response.data === 'password_confirmed_ok ') {
+        //     this.$router.push({ path: '/Personalinformation ' });
+        //   } else {
+        //     this.passIncorrect = !this.passIncorrect;
+        //   }
+        // } else {
+        //   this.oldPassIncorrect = !this.oldPassIncorrect;
+        // }
+        if (response.data === 'old_password_ok ') {
+          console.log('tout est ok');
+          this.$router.push({ path: '/Personalinformation ' });
         } else {
-          console.log('Erreur1');
-        }
-        if (response.data === 'password_confirmed_incorrect') {
-          this.passIncorrect = !this.passIncorrect;
-        } else {
-          console.log('Erreur2');
-        }
-        if (response.data === 'old_password_incorrect') {
           this.oldPassIncorrect = !this.oldPassIncorrect;
-        } else {
-          console.log('Erreur3');
         }
       });
     },
