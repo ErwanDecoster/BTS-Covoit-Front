@@ -7,6 +7,7 @@
     </div>
       <form @submit.stop.prevent="AddRegistration" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Inscription</h2>
+        <p v-show="compteExistant" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Vous avez déjà un compte</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="name">Nom : </label>
           <input v-model="surname" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="nom" id="nom">
@@ -44,6 +45,7 @@ export default {
       tel: '',
       password: '',
       password_confirmed: '',
+      compteExistant: '',
     };
   },
   methods: {
@@ -66,8 +68,13 @@ export default {
         password: this.password,
         password_confirmed: this.password_confirmed,
       }).then((response) => {
-        console.log(response);
-        this.$router.push({ path: '/' });
+        if (response.data === 'Vous avez déjà un compte ') {
+          console.log('deja compte');
+          this.compteExistant = !this.compteExistant;
+        } else {
+          console.log(response);
+          this.$router.push({ path: '/' });
+        }
       });
     },
   },
