@@ -68,7 +68,7 @@ export default {
         password: this.password,
         password_confirmed: this.password_confirmed,
       }).then((response) => {
-        if (response.data === 'Vous avez déjà un compte ') {
+        if (response.data === 'Vous avez déjà un compte') {
           console.log('deja compte');
           this.compteExistant = !this.compteExistant;
         } else {
