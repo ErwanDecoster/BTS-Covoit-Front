@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     NewPassword() {
-      // console.log('test');
       this.fetchEditPassword();
     },
     fetchEditPassword() {
@@ -64,20 +63,7 @@ export default {
         new_password_confirmed: this.new_password_confirmed,
         tel: this.tel,
       }).then((response) => {
-        // if (response.data === 'password_confirmed_ok') {
-        //   // this.$router.push({ path: '/Personalinformation' });
-        //   this.passOk = !this.passOk;
-        // } else {
-        //   this.passIncorrect = !this.passIncorrect;
-        // }
-        // if (response.data === 'old_password_incorrect') {
-        //   this.oldPassIncorrect = !this.oldPassIncorrect;
-        // } else {
-        //   console.log('test');
-        // }
-
         if (response.data === 'password_confirmed_ok') {
-          // this.$router.push({ path: '/Personalinformation' });
           this.passOk = !this.passOk;
         } else {
           this.passIncorrect = !this.passIncorrect;

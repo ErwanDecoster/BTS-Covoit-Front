@@ -17,7 +17,7 @@
           <input v-model="name" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="prenom" id="prenom">
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="email">Téléphone : </label>
+          <label class="text-left font-bold" for="tel">Téléphone : </label>
           <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="tel" id="tel">
         </div>
         <div class="grid gap-2">
@@ -77,8 +77,6 @@ export default {
         }
       });
     },
-  },
-  mounted() {
   },
 };
 </script>

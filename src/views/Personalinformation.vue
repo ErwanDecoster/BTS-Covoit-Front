@@ -10,26 +10,27 @@
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
         <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">{{ PersonalInformation.l_name }}</p>
-          <button>
+          <p class="grow text-1xl text-center">{{ PersonalInformation.l_name }}</p>
+          <!-- <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
-          </button>
+          </button> -->
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">{{ PersonalInformation.f_name }}</p>
-          <button>
+          <p class="grow text-1xl text-center">{{ PersonalInformation.f_name }}</p>
+          <!-- <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
-          </button>
+          </button> -->
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">{{ PersonalInformation.tel }}</p>
-          <button>
+          <p class="grow text-1xl text-center">{{ PersonalInformation.tel }}</p>
+          <!-- <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
-          </button>
+          </button> -->
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
+        <router-link to="/EditPersonalInformation" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Changer mes informations personnelles</router-link>
         <router-link to="/EditPassword" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Changer de mot de passe</router-link>
       </form>
       <div class="grid gap-4">

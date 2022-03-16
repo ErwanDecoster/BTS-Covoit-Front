@@ -10,6 +10,7 @@ import CreateVehicle from '../views/CreateVehicle.vue';
 import VehiclesEdit from '../views/VehiclesEdit.vue';
 import Personalinformation from '../views/Personalinformation.vue';
 import EditPassword from '../views/EditPassword.vue';
+import EditPersonalInformation from '../views/EditPersonalInformation.vue';
 
 const routes = [
   {
@@ -67,6 +68,11 @@ const routes = [
     path: '/EditPassword',
     name: 'EditPassword',
     component: EditPassword,
+  },
+  {
+    path: '/EditPersonalInformation',
+    name: 'EditPersonalInformation',
+    component: EditPersonalInformation,
   },
 ];
 
