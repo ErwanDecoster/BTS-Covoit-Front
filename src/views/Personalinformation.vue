@@ -33,8 +33,11 @@
         <router-link to="/EditPersonalInformation" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Changer mes informations personnelles</router-link>
         <router-link to="/EditPassword" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Changer de mot de passe</router-link>
       </form>
+      <!-- <p v-show="realDelCompte" class="bg-red-500 p-2 rounded-lg text-white font-bold text-center">Voulez-vous vraiment supprimer votre compte ?</p><br>
+      <p v-show="realDelCompte" class="bg-red-500 w-20 mx-auto p-2 rounded-lg text-white font-bold text-center"><router-link @click="delConfirm" to="/Registration">Oui</router-link></p>
+      <p v-show="realDelCompte" class="bg-red-500 w-20 mx-auto p-2 rounded-lg text-white font-bold text-center"><router-link to="/PersonalInformation">Non</router-link></p> -->
       <div class="grid gap-4">
-        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Sauvegarder</button>
+        <router-link to="/deleteAccount" class=" bg-red-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] p-2 rounded-full text-white font-bold">Supprimer mon compte</router-link>
         <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
       </div>
     </div>
@@ -50,9 +53,13 @@ export default {
   data() {
     return {
       PersonalInformation: '',
+      realDelCompte: '',
     };
   },
   methods: {
+    deleteAccount() {
+      this.realDelCompte = !this.realDelCompte;
+    },
     fetchPersonalInformation() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_personal_information',
