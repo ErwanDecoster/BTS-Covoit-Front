@@ -24,7 +24,7 @@
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <div class="flex relative">
-          <p class="grow text-1xl text-left">{{ PersonalInformation.tel }}</p>
+          <p class="grow text-1xl text-left">{{ formatNum(PersonalInformation.tel) }}</p>
           <button>
             <img src="@/assets/logos/Pen.svg" class="w-8 h-8 mx-1" />
           </button>
@@ -62,6 +62,13 @@ export default {
         this.PersonalInformation = response.data;
         console.log(this.PersonalInformation);
       });
+    },
+    formatNum(num) {
+      let number = num;
+      if (num.length < 10) {
+        number = `0${num}`;
+      }
+      return number.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
     },
   },
   mounted() {

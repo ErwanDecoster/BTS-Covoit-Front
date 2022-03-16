@@ -43,13 +43,6 @@ export default {
         }
       });
     },
-    formatNum(num) {
-      let number = num;
-      if (num.length < 10) {
-        number = `0${num}`;
-      }
-      return number.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
-    },
   },
   mounted() {
     this.fetchallTripForUser();
