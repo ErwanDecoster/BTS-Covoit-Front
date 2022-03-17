@@ -8,11 +8,11 @@
         <h2 class="text-2xl font-bold m-6">Rechercher un voyage</h2>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="date_of_travel">Date : </label>
-          <input class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="date" name="date_of_travel" id="date_of_travel">
+          <input v-model="date_of_travel" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="date" name="date_of_travel" id="date_of_travel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="houre_of_travel">Heure de départ : </label>
-          <input class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="houre_of_travel" id="houre_of_travel">
+          <input v-model="houre_of_travel" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="time" name="houre_of_travel" id="houre_of_travel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="starting_point">Point de départ : </label>
@@ -28,7 +28,8 @@
             <option v-for="city in sugestedCityEndPoint" :key="city" :value="city.ville_nom_reel">{{ city.ville_nom_reel }} - {{ city.ville_code_postal }}</option>
           </datalist>
         </div>
-        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Rechercher</button>
+        <!-- <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Rechercher</button> -->
+        <router-link class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold" :to="{ name: 'SearchTripResult', params: { endpointCity: this.end_point, startingPoint: this.starting_point, dateOfTravel: this.date_of_travel, houreOfTravel: this.houre_of_travel}}">Rechercher</router-link>
       </form>
     </div>
   </div>
@@ -39,9 +40,12 @@ import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
 
 export default {
+  name: 'App',
   components: { Navbar },
   data() {
     return {
+      date_of_travel: '',
+      houre_of_travel: '',
       starting_point: '',
       end_point: '',
       sugestedCityStartingPoint: '',

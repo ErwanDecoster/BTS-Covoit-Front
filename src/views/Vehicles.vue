@@ -34,7 +34,7 @@ export default {
     fetchAllVehiclesForUser() {
       axios.post('http://localhost/actions.php', {
         action: 'fetchall_vehicles_for_user',
-        tel: '0625306813',
+        tel: localStorage.tel,
       }).then((response) => {
         if (response.data !== ' ') {
           this.allVehiclesForUser = response.data;

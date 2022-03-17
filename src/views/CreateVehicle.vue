@@ -72,7 +72,7 @@ export default {
     AddVehicle() {
       axios.post('http://localhost/actions.php', {
         action: 'add_vehicle',
-        id_user: 1,
+        userTel: localStorage.tel,
         vehicle_name: this.vehicle_name,
         id_motorization: this.id_motorization,
         nb_places: this.nb_places,

@@ -35,7 +35,7 @@ export default {
   methods: {
     fetchallTripForUser() {
       axios.post('http://localhost/actions.php', {
-        action: 'fetchall_trip_for_user_up_to_date',
+        action: 'fetchall_trip_for_user',
         tel: localStorage.tel,
       }).then((response) => {
         if (response.data !== ' ') {
