@@ -12,6 +12,7 @@ import Personalinformation from '../views/Personalinformation.vue';
 import EditPassword from '../views/EditPassword.vue';
 import EditPersonalInformation from '../views/EditPersonalInformation.vue';
 import DeleteAccount from '../views/DeleteAccount.vue';
+import Home from '../views/Home.vue';
 
 const routes = [
   {
@@ -81,6 +82,11 @@ const routes = [
     path: '/deleteAccount',
     name: 'DeleteAccount',
     component: DeleteAccount,
+  },
+  {
+    path: '/Home',
+    name: 'Home',
+    component: Home,
   },
 ];
 
