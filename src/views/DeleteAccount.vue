@@ -38,6 +38,7 @@ export default {
       PersonalInformation: '',
       tel: '',
       problemAccount: '',
+      modifOk: '',
     };
   },
   methods: {
@@ -47,14 +48,19 @@ export default {
     fetchConfirmationDelete() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_delete_account',
-        tel: localStorage.tel,
+        tel: this.tel,
       }).then((response) => {
-        if (response.data === 'Account_not_delete') {
-          this.problemAccount = !this.problemAccount;
+        if (response.data === 'Account_deleted') {
+          this.$router.push({ name: 'Login', params: { modifOk: true } });
         } else {
-          this.$router.push({ path: '/registration' });
+          this.problemAccount = !this.problemAccount;
         }
       });
+    },
+    mounted() {
+      if (!localStorage.tel) {
+        this.$router.push({ path: '/' });
+      }
     },
   },
 };

@@ -8,8 +8,7 @@
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <form class="flex flex-col gap-4" @submit.stop.prevent="AddNewPersonalInformation">
         <h2 class="text-2xl font-bold my-6">Modification des données personnelles :</h2>
-        <p v-show="modifOk" class="bg-green-500 p-2 rounded-lg text-white font-bold text-left">Vos informations personnelles ont été changer avec succès !</p>
-        <p v-show="erreurModification" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Erreur de modification, vueillez recommencer</p>
+        <p v-show="erreurModification" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Votre ancien téléphone est incorrecte</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Nom : </label>
           <input v-model="surname" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="nom" id="nom">
@@ -68,8 +67,9 @@ export default {
         old_tel: this.old_tel,
         tel: this.tel,
       }).then((response) => {
+        console.log(response.data);
         if (response.data === 'modification_ok') {
-          this.modifOk = !this.modifOk;
+          this.$router.push({ name: 'Personalinformation', params: { modifOk: true } });
         } else {
           this.erreurModification = !this.erreurModification;
         }

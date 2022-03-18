@@ -18,6 +18,7 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login,
+    props: true,
   },
   {
     path: '/registration',
@@ -64,6 +65,7 @@ const routes = [
     path: '/Personalinformation',
     name: 'Personalinformation',
     component: Personalinformation,
+    props: true,
   },
   {
     path: '/EditPassword',
