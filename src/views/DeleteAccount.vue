@@ -10,9 +10,9 @@
         <p v-show="problemAccount === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Votre compte n'a malheuresement pas pu être supprimer</p>
         <div class="text-left text-xl text-center mt-20"><strong>Avant de désactiver votre compte, sachez que:</strong></div>
           <ul>
-            <li>- La suppression de votre compte est définitive.</li>
-            <li>- Votre compte sera supprimé de Covoit après confirmation de votre part.</li>
-            <li>- Toutes vos données personnelles que nous avons collectées seront supprimer en-même temps que la suppresion de votre compte.</li>
+            <li class="text-left">- La suppression de votre compte est définitive.</li>
+            <li class="text-left">- Votre compte sera supprimé de Covoit après confirmation de votre part.</li>
+            <li class="text-left">- Toutes vos données personnelles que nous avons collectées seront supprimées en-même temps que la suppresion de votre compte.</li>
           </ul>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Téléphone : </label>
@@ -20,7 +20,7 @@
         </div>
         <div class="grid gap-4">
           <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-red-500 p-2 rounded-full text-white font-bold mt-20">Confirmer la suppression de mon compte</button>
-          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
+          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Annuler</button>
         </div>
       </form>
     </div>
