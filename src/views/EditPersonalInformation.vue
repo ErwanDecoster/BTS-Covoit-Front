@@ -18,11 +18,11 @@
           <input v-model="name" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="prenom" id="prenom">
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="name">Ancien téléphone : </label>
+          <label class="text-left font-bold" for="name">Téléphone actuel : </label>
           <input v-model="old_tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="tel" id="tel">
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="name">Téléphone : </label>
+          <label class="text-left font-bold" for="name">Nouveau téléphone : </label>
           <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="tel" id="tel">
         </div>
         <div class="grid gap-4">

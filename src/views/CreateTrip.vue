@@ -5,7 +5,7 @@
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
       <form class="flex flex-col gap-4 " @submit.stop.prevent="CreateTripValidation">
-        <h2 class="text-2xl font-bold m-6">Créer un intinéraire :</h2>
+        <h2 class="text-2xl font-bold m-6">Créer un itinéraire :</h2>
         <p v-show="!allVehiclesForUser" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Attention vous n'avez pas encore de vehicule enregistré ! <router-link to="/CreateVehicle" class="w-full underline rounded-full text-white font-bold">Crée un vehicule</router-link></p>
         <p v-for="error in errors" :key="error" @click="this.errors = [];" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">{{ error }}</p>
         <div class="grid gap-2">
@@ -24,14 +24,14 @@
           </datalist>
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
+          <label class="text-left font-bold" for="end_point">Point d'arrivée : </label>
           <input v-model="end_point" @input="allCityEndPointFiltred" autocomplete="off" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" list="end_point_list" name="end_point" id="end_point">
           <datalist id="end_point_list">
             <option v-for="city in sugestedCityEndPoint" :key="city" :value="city.ville_nom_reel">{{ city.ville_nom_reel }} - {{ city.ville_code_postal }}</option>
           </datalist>
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="vehicle">Vehicule : </label>
+          <label class="text-left font-bold" for="vehicle">Véhicule : </label>
           <select v-show="allVehiclesForUser != ''" v-model="id_vehicles" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="" id="">
             <option v-for="vehicle in allVehiclesForUser" v-bind:key="vehicle" :value="vehicle.id_vehicles">{{ vehicle.vehicle_name }} - {{ vehicle.color }}</option>
           </select>
@@ -93,19 +93,19 @@ export default {
               if (this.id_vehicles !== '') {
                 this.CreateTrip();
               } else {
-                this.errors.push('Un véhicule doit etre selectionné.');
+                this.errors.push('Un véhicule doit être selectionné.');
               }
             } else {
-              this.errors.push('Un point de d\'arriver doit etre selectionné parmis ceux proposé.');
+              this.errors.push('Un point de d\'arrivée doit être selectionné parmis ceux proposés.');
             }
           } else {
-            this.errors.push('Un point de depart doit etre selectionné parmis ceux proposé.');
+            this.errors.push('Un point de départ doit être selectionné parmis ceux proposés.');
           }
         } else {
-          this.errors.push('Une heure de depart doit etre selectionné.');
+          this.errors.push('Une heure de départ doit être selectionnée.');
         }
       } else {
-        this.errors.push('Une date de depart doit est choisi.');
+        this.errors.push('Une date de départ doit être choisie.');
       }
     },
     CreateTrip() {

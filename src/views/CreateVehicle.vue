@@ -76,16 +76,16 @@ export default {
             if (this.color !== '') {
               this.AddVehicle();
             } else {
-              this.errors.push('Une couleur doit etre selectionné.');
+              this.errors.push('Une couleur doit être selectionnée.');
             }
           } else {
-            this.errors.push('Le nombre de places doit étre compris en 1 et 6.');
+            this.errors.push('Le nombre de places doit être compris en 1 et 6.');
           }
         } else {
-          this.errors.push('Une motorisation doit etre selectionné.');
+          this.errors.push('Une motorisation doit être selectionnée.');
         }
       } else {
-        this.errors.push('Le modèle du véhicule doit contenir au moins 4 caracteres.');
+        this.errors.push('Le modèle du véhicule doit contenir au moins 4 caractères.');
       }
     },
     AddVehicle() {

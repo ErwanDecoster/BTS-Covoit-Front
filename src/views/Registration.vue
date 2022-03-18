@@ -13,7 +13,7 @@
           <input v-model="surname" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="family-name" id="nom" autocomplete="family-name">
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="prenom">Prenom : </label>
+          <label class="text-left font-bold" for="prenom">Prénom : </label>
           <input v-model="name" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="given-name" id="prenom" autocomplete="given-name">
         </div>
         <div class="grid gap-2">

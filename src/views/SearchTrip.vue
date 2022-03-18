@@ -22,7 +22,7 @@
           </datalist>
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="end_point">Point d'arriver : </label>
+          <label class="text-left font-bold" for="end_point">Point d'arrivée : </label>
           <input v-model="end_point" @input="allCityEndPointFiltred" autocomplete="off" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" list="end_point_list" name="end_point" id="end_point">
           <datalist id="end_point_list">
             <option v-for="city in sugestedCityEndPoint" :key="city" :value="city.ville_nom_reel">{{ city.ville_nom_reel }} - {{ city.ville_code_postal }}</option>
