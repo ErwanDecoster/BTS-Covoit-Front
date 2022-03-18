@@ -7,7 +7,7 @@
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <form class="flex flex-col gap-4" @submit.stop.prevent="deleteAccount">
-        <p v-show="problemAccount" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Votre compte n'a malheuresement pas pu être supprimer</p>
+        <p v-show="problemAccount === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Votre compte n'a malheuresement pas pu être supprimer</p>
         <div class="text-left text-xl text-center mt-20"><strong>Avant de désactiver votre compte, sachez que:</strong></div>
           <ul>
             <li>- La suppression de votre compte est définitive.</li>
@@ -39,6 +39,7 @@ export default {
       tel: '',
       problemAccount: '',
       modifOk: '',
+      visible: true,
     };
   },
   methods: {
@@ -53,7 +54,7 @@ export default {
         if (response.data === 'Account_deleted') {
           this.$router.push({ name: 'Login', params: { modifOk: true } });
         } else {
-          this.problemAccount = !this.problemAccount;
+          this.problemAccount = 'true';
         }
       });
     },

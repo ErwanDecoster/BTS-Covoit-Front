@@ -7,8 +7,8 @@
     </div>
       <form @submit.stop.prevent="AddLogin" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Connection</h2>
-          <p v-show="identifiantIncorrecte" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Identifiant incorrecte</p>
-          <p v-show="champs" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Les champs sont vides</p>
+          <p v-show="identifiantIncorrecte === 'true' && visible3 === true" @click="visible3 = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Identifiant incorrecte</p>
+          <p v-show="champs === 'true' && visible2 === true" @click="visible2 = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Les champs sont vides</p>
           <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre compte a été supprimer avec succès !</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="telephone">Téléphone : </label>
@@ -37,6 +37,8 @@ export default {
       identifiantIncorrecte: '',
       champs: '',
       visible: true,
+      visible2: true,
+      visible3: true,
     };
   },
   methods: {
@@ -59,13 +61,13 @@ export default {
         }).then((response) => {
           console.log(response);
           if (response.data === 'OK') {
-            this.$router.push({ path: '/searchtrip' });
+            this.$router.push({ path: '/Home' });
           } else {
-            this.identifiantIncorrecte = !this.identifiantIncorrecte;
+            this.identifiantIncorrecte = 'true';
           }
         });
       } else {
-        this.champs = !this.champs;
+        this.champs = 'true';
       }
     },
   },
