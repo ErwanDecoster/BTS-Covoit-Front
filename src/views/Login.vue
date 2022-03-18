@@ -7,6 +7,9 @@
     </div>
       <form @submit.stop.prevent="AddLogin" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Connection</h2>
+          <p v-show="identifiantIncorrecte" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Identifiant incorrecte</p>
+          <p v-show="champs" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Les champs sont vides</p>
+          <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre compte a été supprimer avec succès !</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="telephone">Téléphone : </label>
           <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="telephone" id="tel">
@@ -25,11 +28,15 @@
 import axios from 'axios';
 
 export default {
+  props: ['modifOk'],
   name: 'Login',
   data() {
     return {
       tel: '',
       password: '',
+      identifiantIncorrecte: '',
+      champs: '',
+      visible: true,
     };
   },
   methods: {
@@ -54,11 +61,11 @@ export default {
           if (response.data === 'OK') {
             this.$router.push({ path: '/searchtrip' });
           } else {
-            console.log('ERROR');
+            this.identifiantIncorrecte = !this.identifiantIncorrecte;
           }
         });
       } else {
-        console.log('Les champs sont vide');
+        this.champs = !this.champs;
       }
     },
   },
