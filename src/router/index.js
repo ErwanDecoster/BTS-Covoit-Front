@@ -57,6 +57,7 @@ const routes = [
     path: '/Vehicles',
     name: 'Vehicles',
     component: Vehicles,
+    props: true,
   },
   {
     path: '/CreateTrip',

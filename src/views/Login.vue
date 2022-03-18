@@ -7,16 +7,16 @@
     </div>
       <form @submit.stop.prevent="AddLogin" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Connection</h2>
-          <p v-show="identifiantIncorrecte" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Identifiant incorrecte</p>
+          <p v-show="identifiantIncorrecte" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Identifiant ou mot de passe incorrecte</p>
           <p v-show="champs" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Les champs sont vides</p>
           <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre compte a été supprimer avec succès !</p>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="telephone">Téléphone : </label>
-          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="telephone" id="tel">
+          <label class="text-left font-bold" for="phone">Téléphone : </label>
+          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="phone" id="tel" autocomplete="tel">
         </div>
         <div class="grid gap-2">
-          <label class="text-left font-bold" for="pass">Mot de passe : </label>
-          <input v-model="password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="pass" id="password">
+          <label class="text-left font-bold" for="password">Mot de passe : </label>
+          <input v-model="password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="password" id="password" autocomplete="current-password">
         </div>
         <button @click="Locale_Storage" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Se connecter</button>
         <router-link to="/registration" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Inscription</router-link>

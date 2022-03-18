@@ -21,6 +21,7 @@
         </div>
         <div class="flex relative">
           <p class="grow text-1xl text-left">{{ PersonalInformation.tel }}</p>
+          <!-- <p class="grow text-1xl text-left">{{ formatNum(localStorage.tel) }}</p> -->
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
         </div>
         <router-link to="/EditPersonalInformation" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Changer mes informations personnelles</router-link>
@@ -50,6 +51,13 @@ export default {
     };
   },
   methods: {
+    // formatNum(num) {
+    //   if (num.length < 10) {
+    //     num = `0${num}`;
+    //   }
+    //   const newnum = num.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
+    //   return newnum;
+    // },
     deleteAccount() {
       this.realDelCompte = !this.realDelCompte;
     },
@@ -64,20 +72,14 @@ export default {
         console.log(this.PersonalInformation);
       });
     },
-    formatNum(num) {
-      let number = num;
-      if (num.length < 10) {
-        number = `0${num}`;
-      }
-      return number.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
-    },
   },
   mounted() {
-    console.log(localStorage.tel);
+    // console.log(localStorage.tel);
     this.fetchPersonalInformation();
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }
+    // this.formatNum('725306813');
   },
 };
 </script>
