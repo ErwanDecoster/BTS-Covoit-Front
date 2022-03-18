@@ -10,15 +10,18 @@
         <h2 class="text-2xl font-bold m-6">Voyage disponible</h2>
         <div class="flex flex-col gap-4">
           <div v-for="trip in Trips" v-bind:key="trip.startingTime">
-            <JoinableTrip :trip="trip" />
+            <JoinableTrip :trip="trip" :startingPoint="startingPoint" :houreOfTravel="houreOfTravel" />
           </div>
+        </div>
+        <div v-show="OtherTrips.length > 0 && Trips.length === 0">
+          <p class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Aucun trajet n'existe pour cette date</p>
         </div>
       </div>
       <div v-show="OtherTrips.length > 0">
         <h2 class="text-2xl font-bold m-6">Voyage disponible Pour des dates similaire</h2>
         <div class="flex flex-col gap-4">
           <div v-for="trip in OtherTrips" v-bind:key="trip.startingTime">
-            <JoinableTrip :trip="trip" />
+            <JoinableTrip :trip="trip" :startingPoint="startingPoint" :houreOfTravel="houreOfTravel" />
           </div>
         </div>
       </div>
