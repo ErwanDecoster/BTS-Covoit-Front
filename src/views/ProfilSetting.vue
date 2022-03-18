@@ -26,7 +26,6 @@ export default {
   components: { Navbar },
   data() {
     return {
-      authenticated: true,
     };
   },
   methods: {

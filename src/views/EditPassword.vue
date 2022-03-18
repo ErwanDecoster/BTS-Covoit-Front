@@ -8,7 +8,7 @@
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <form class="flex flex-col gap-4" @submit.stop.prevent="NewPassword">
         <h2 class="text-2xl font-bold my-6">Modification du mot de passe :</h2>
-        <p v-show="passIncorrect" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Le mot de passe de confirmation ou l'ancien mot de passe est incorrecte</p>
+        <p v-show="passIncorrect === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">L'identifiant ou le mot de passe est incorrecte</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Mot de passe actuel : </label>
           <input v-model="old_password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="actual_password" id="actual_password">
@@ -47,7 +47,8 @@ export default {
       new_password_confirmed: '',
       tel: '',
       passOk: '',
-      passIncorrect: '',
+      passIncorrect: true,
+      visible: true,
     };
   },
   methods: {
@@ -65,7 +66,7 @@ export default {
         if (response.data === 'password_confirmed_ok') {
           this.$router.push({ name: 'Personalinformation', params: { passOk: true } });
         } else {
-          this.passIncorrect = !this.passIncorrect;
+          this.passIncorrect = 'true';
         }
       });
     },
