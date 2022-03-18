@@ -1,6 +1,5 @@
 <template>
   <div @click="extend = !extend" class="bg-white p-6 rounded-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] flex flex-col gap-4 duration-200">
-    {{ trip.id_trip }}
     <p class="font-bold text-left text-lg">{{ formatDate(trip.starting_date) }}</p>
     <div class="stop">
       <div class="flex gap-6 items-center h-6">
@@ -57,13 +56,14 @@
         <p>{{ trip.color }}</p>
       </div>
     </div>
+    <button v-if="extend" @click="addTripPassenger(trip.id_trip, this.startingPoint, this.houreOfTravel)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Rejoindre</button>
   </div>
 </template>
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 export default ({
-  props: ['trip'],
+  props: ['trip', 'startingPoint', 'houreOfTravel'],
   data() {
     return {
       extend: false,
@@ -91,14 +91,21 @@ export default ({
       const mouthName = months[date.getMonth()];
       return `${dayName} ${dateNumber} ${mouthName}`;
     },
-    // fetchTrips() {
-    //   axios.post('http://localhost/actions.php', {
-    //     action: 'fetch_trips',
-    //   }).then((response) => {
-    //     this.Trips = response.data;
-    //     console.log(response.data);
-    //   });
-    // },
+    addTripPassenger(idTripProps, startingPointProps, houreOfTravelProps) {
+      axios.post('http://localhost/actions.php', {
+        action: 'add_trip_passenger',
+        startingPointCity: startingPointProps,
+        departureTime: houreOfTravelProps,
+        idTrip: idTripProps,
+        UserTel: localStorage.tel,
+      }).then((response) => {
+        this.Trips = response.data;
+        console.log(response.data);
+        if (response.data === 'OK') {
+          this.$router.push({ path: '/Trip' });
+        }
+      });
+    },
   },
   mounted() {
     // this.fetchTrips();
