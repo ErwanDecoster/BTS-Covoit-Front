@@ -6,7 +6,7 @@
       </h1>
     </div>
       <form @submit.stop.prevent="AddLogin" class="flex flex-col gap-4">
-        <h2 class="text-2xl font-bold m-6">Connection</h2>
+        <h2 class="text-2xl font-bold m-6">Connexion</h2>
           <p v-show="identifiantIncorrecte === 'true' && visible3 === true" @click="visible3 = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Identifiant incorrecte</p>
           <p v-show="champs === 'true' && visible2 === true" @click="visible2 = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Les champs sont vides</p>
           <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre compte a été supprimer avec succès !</p>

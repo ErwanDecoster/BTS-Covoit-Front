@@ -45,7 +45,7 @@
     </div>
     <span class="w-full bg-[#30A4A8] h-[2px] opacity-20"></span>
     <div class="flex item-center gap-4">
-      <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center" :src="trip.img" alt="">
+      <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center">
         <p class="w-fit mx-auto text-xl text-neutral-800 tracking-widest">{{ returnFirstLetter(trip.f_name) }}{{ returnFirstLetter(trip.l_name) }}</p>
       </div>
       <div class="flex flex-col justify-center">
