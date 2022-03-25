@@ -33,7 +33,7 @@ export default {
   methods: {
     fetchUserName() {
       axios.post('http://localhost/actions.php', {
-        action: 'fetch_username',
+        action: 'fetch_home_name',
         userTel: localStorage.tel,
       }).then((response) => {
         this.PersonalInformation = response.data;

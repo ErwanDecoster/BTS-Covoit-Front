@@ -59,7 +59,6 @@
   </div>
 </template>
 <script>
-// import axios from 'axios';
 
 export default ({
   props: ['trip'],
@@ -90,17 +89,8 @@ export default ({
       const mouthName = months[date.getMonth()];
       return `${dayName} ${dateNumber} ${mouthName}`;
     },
-    // fetchTrips() {
-    //   axios.post('http://localhost/actions.php', {
-    //     action: 'fetch_trips',
-    //   }).then((response) => {
-    //     this.Trips = response.data;
-    //     console.log(response.data);
-    //   });
-    // },
   },
   mounted() {
-    // this.fetchTrips();
   },
 });
 </script>

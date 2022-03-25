@@ -10,7 +10,10 @@
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
         <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Vos informations personnelles ont été changer avec succès !</p>
         <p v-show="passOk === 'true' && visible2 === true" @click="visible2 = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre mot de passe a été supprimer avec succès !</p>
-        <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div>
+        <!-- <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div> -->
+        <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center">
+          <p class="w-fit mx-auto text-xl text-neutral-800 tracking-widest">{{ PersonalInformation.f_name }}{{  }}</p>
+        </div>
         <div class="flex relative">
           <p class="grow text-1xl text-left">{{ PersonalInformation.l_name }}</p>
           <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
@@ -61,12 +64,10 @@ export default {
         userSurname: localStorage.surname,
       }).then((response) => {
         this.PersonalInformation = response.data;
-        console.log(this.PersonalInformation);
       });
     },
   },
   mounted() {
-    console.log(localStorage.tel);
     this.fetchPersonalInformation();
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
