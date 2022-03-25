@@ -1,6 +1,5 @@
 <template>
   <div @click="extend = !extend" class="bg-white p-6 rounded-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] flex flex-col gap-4 duration-200">
-    {{ trip.id_trip }}
     <p class="font-bold text-left text-lg">{{ formatDate(trip.starting_date) }}</p>
     <div class="stop">
       <div class="flex gap-6 items-center h-6">
