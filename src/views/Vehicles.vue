@@ -9,9 +9,10 @@
       <div>
         <h2 class="text-2xl font-bold m-6">Mes véhicules</h2>
         <div class="flex flex-col gap-4">
-          <p v-show="!allVehiclesForUser" class="">Vous n'avez pas encore de vehicule enregister ! parfait c'est le moment !</p>
+          <p v-show="!allVehiclesForUser" class="">Vous n'avez pas encore de véhicule enregisté ! parfait c'est le moment !</p>
+          <p v-show="vehiculeAdded === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Véhicule ajouté avec succés.</p>
           <router-link :to="'/VehiclesEdit/' + vehicle.row_id " v-for="vehicle in allVehiclesForUser" v-bind:key="vehicle" class="bg-white p-2 rounded-full text-neutral-900 font-bold border border-neutral-900">{{ vehicle.vehicle_name }} - {{ vehicle.color }}</router-link>
-          <router-link to="/CreateVehicle" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Crée un nouveau vehicule</router-link>
+          <router-link to="/CreateVehicle" class="w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer un nouveau véhicule</router-link>
         </div>
       </div>
       <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
@@ -24,17 +25,19 @@ import Navbar from '@/components/Navbar.vue';
 import axios from 'axios';
 
 export default {
+  props: ['vehiculeAdded'],
   components: { Navbar },
   data() {
     return {
       allVehiclesForUser: '',
+      visible: true,
     };
   },
   methods: {
     fetchAllVehiclesForUser() {
       axios.post('http://localhost/actions.php', {
         action: 'fetchall_vehicles_for_user',
-        tel: '0625306813',
+        tel: localStorage.tel,
       }).then((response) => {
         if (response.data !== ' ') {
           this.allVehiclesForUser = response.data;

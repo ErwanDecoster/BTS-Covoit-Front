@@ -7,7 +7,7 @@
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <form class="flex flex-col gap-4 ">
-        <h2 class="text-2xl font-bold m-6">Informations du vehicule :</h2>
+        <h2 class="text-2xl font-bold m-6">Informations du véhicule :</h2>
         <div class="flex relative">
           <p class="grow text-1xl text-left">{{ VehiclesForUser.vehicle_name }}</p>
           <button>

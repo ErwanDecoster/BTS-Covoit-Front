@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <!-- <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button> -->
+      <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
     </div>
   </div>
   <navbar/>
@@ -35,7 +35,7 @@ export default {
   methods: {
     fetchallTripForUser() {
       axios.post('http://localhost/actions.php', {
-        action: 'fetchall_trip_for_user_up_to_date',
+        action: 'fetchall_trip_for_user',
         tel: localStorage.tel,
       }).then((response) => {
         if (response.data !== ' ') {

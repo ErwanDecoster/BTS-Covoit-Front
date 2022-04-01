@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/Login.vue';
 import Registration from '../views/Registration.vue';
 import SearchTrip from '../views/SearchTrip.vue';
+import SearchTripResult from '../views/SearchTripResult.vue';
 import Trip from '../views/Trip.vue';
+import TripHistory from '../views/TripHistory.vue';
 import ProfilSetting from '../views/ProfilSetting.vue';
 import Vehicles from '../views/Vehicles.vue';
 import CreateTrip from '../views/CreateTrip.vue';
@@ -32,9 +34,20 @@ const routes = [
     component: SearchTrip,
   },
   {
+    path: '/SearchTripResult',
+    props: true,
+    name: 'SearchTripResult',
+    component: SearchTripResult,
+  },
+  {
     path: '/trip',
     name: 'Trip',
     component: Trip,
+  },
+  {
+    path: '/TripHistory',
+    name: 'TripHistory',
+    component: TripHistory,
   },
   {
     path: '/ProfilSetting',
@@ -45,6 +58,7 @@ const routes = [
     path: '/Vehicles',
     name: 'Vehicles',
     component: Vehicles,
+    props: true,
   },
   {
     path: '/CreateTrip',
