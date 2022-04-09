@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-neutral-100/70 fixed inset-x-0 shadow-[0_-5px_15px_-8px_rgba(0,0,0,0.5)] rounded-t-2xl flex justify-evenly py-3 fixed bottom-0 backdrop-blur-xl">
+  <div class="bg-neutral-100/70 dark:bg-slate-900 dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)] fixed inset-x-0 shadow-[0_-5px_15px_-8px_rgba(0,0,0,0.5)] rounded-t-2xl flex justify-evenly py-3 fixed bottom-0 backdrop-blur-xl">
     <router-link to="/Home" class="block">
       <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9.02778 28H2V11.9506L13.5 2L25 11.9506V28H17.3333M9.02778 28V16.7654H17.3333V28M9.02778 28H17.3333" stroke="black" stroke-width="3" stroke-linejoin="round"/>
@@ -28,6 +28,7 @@
     </router-link>
   </div>
 </template>
+
 <style>
 .router-link-active path{
   fill: #A9DE8E;

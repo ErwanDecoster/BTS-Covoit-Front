@@ -7,9 +7,9 @@
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <div>
-        <h2 class="text-2xl font-bold m-6">Vos voyages en cours</h2>
+        <h2 class="text-2xl font-bold m-6 dark:text-white">Vos voyages en cours</h2>
         <div class="flex flex-col gap-4">
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">
             <div v-for="trip in Trips" v-bind:key="trip.startingTime">
               <Trip :trip="trip" />
             </div>

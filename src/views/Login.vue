@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="h-full flex flex-col">
+  <div id="login" class="h-full flex flex-col dark:text-white">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -12,14 +12,14 @@
           <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre compte a été supprimer avec succès !</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="phone">Téléphone : </label>
-          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="phone" id="tel" autocomplete="tel">
+          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="tel" name="phone" id="tel" autocomplete="tel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="password">Mot de passe : </label>
-          <input v-model="password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="password" id="password" autocomplete="current-password">
+          <input v-model="password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="password" name="password" id="password" autocomplete="current-password">
         </div>
-        <button @click="Locale_Storage" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Se connecter</button>
-        <router-link to="/registration" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Inscription</router-link>
+        <button @click="Locale_Storage" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)] mt-5">Se connecter</button>
+        <router-link to="/registration" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Inscription</router-link>
       </form>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div id="" class="h-full flex flex-col">
+  <div id="" class="h-full flex flex-col dark:text-white">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -10,29 +10,27 @@
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
         <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Vos informations personnelles ont été changer avec succès !</p>
         <p v-show="passOk === 'true' && visible2 === true" @click="visible2 = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre mot de passe a été supprimer avec succès !</p>
-        <!-- <div class="rounded-full bg-indigo-500 h-20 w-20 mx-auto my-5"><img class="mx-auto h-20 w-20 mx-auto" src="@/assets/logos/people.svg" alt=""></div> -->
-        <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center">
-          <p class="w-fit mx-auto text-xl text-neutral-800 tracking-widest">{{ PersonalInformation.f_name }}{{  }}</p>
+        <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center mx-auto">
+          <p class="w-fit mx-auto text-xl text-neutral-800 tracking-widest dark:text-white">{{ PersonalInformation.f_name }}{{  }}</p>
         </div>
         <div class="flex relative">
           <p class="grow text-1xl text-left">{{ PersonalInformation.l_name }}</p>
-          <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
+          <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full dark:bg-white"></span>
         </div>
         <div class="flex relative">
           <p class="grow text-1xl text-left">{{ PersonalInformation.f_name }}</p>
-          <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
+          <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full dark:bg-white"></span>
         </div>
         <div class="flex relative">
           <p class="grow text-1xl text-left">{{ PersonalInformation.tel }}</p>
-          <!-- <p class="grow text-1xl text-left">{{ formatNum(localStorage.tel) }}</p> -->
-          <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full"></span>
+          <span class="bg-gray-900 h-0.5 w-full absolute bottom-0 rounded-full dark:bg-white"></span>
         </div>
-        <router-link to="/EditPersonalInformation" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Changer mes informations personnelles</router-link>
-        <router-link to="/EditPassword" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Changer de mot de passe</router-link>
+        <router-link to="/EditPersonalInformation" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)] mt-5">Changer mes informations personnelles</router-link>
+        <router-link to="/EditPassword" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Changer de mot de passe</router-link>
       </form>
       <div class="grid gap-4">
-        <router-link to="/deleteAccount" class=" bg-red-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] p-2 rounded-full text-white font-bold">Supprimer mon compte</router-link>
-        <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
+        <router-link to="/deleteAccount" class=" bg-red-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] p-2 rounded-full text-white font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,0,0,0.5)]">Supprimer mon compte</router-link>
+        <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Retour</button>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="h-full flex flex-col">
+  <div id="login" class="h-full flex flex-col dark:text-white">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -28,7 +28,7 @@
       <div v-show="OtherTrips.length === 0 && Trips.length === 0">
         <p class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Nous sommes desolés aucun trajet ne correspond à votre recherche.</p>
       </div>
-      <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
+      <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Retour</button>
     </div>
   </div>
   <navbar/>
