@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="h-full flex flex-col">
+  <div id="login" class="h-full flex flex-col w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -7,10 +7,17 @@
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <div>
-        <h2 class="text-2xl font-bold m-6">Vos voyages</h2>
+        <h2 class="text-2xl font-bold m-6 dark:text-white">Vos voyages en cours</h2>
         <div class="flex flex-col gap-4">
-          <div v-for="trip in Trips" v-bind:key="trip.startingTime">
-            <Trip :trip="trip" />
+          <div class="flex flex-col gap-4 dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">
+            <div v-for="trip in Trips" v-bind:key="trip.startingTime">
+              <Trip :trip="trip" />
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div v-for="trip in TripsPassenger" v-bind:key="trip.startingTime">
+              <Trip :trip="trip" />
+            </div>
           </div>
         </div>
       </div>
@@ -30,6 +37,7 @@ export default {
   data() {
     return {
       Trips: [],
+      TripsPassenger: [],
     };
   },
   methods: {
@@ -43,9 +51,20 @@ export default {
         }
       });
     },
+    fetchallTripForUserPassenger() {
+      axios.post('http://localhost/actions.php', {
+        action: 'fetchall_trip_for_user_passenger_up_to_date',
+        tel: localStorage.tel,
+      }).then((response) => {
+        if (response.data !== ' ') {
+          this.TripsPassenger = response.data;
+        }
+      });
+    },
   },
   mounted() {
     this.fetchallTripForUser();
+    this.fetchallTripForUserPassenger();
     // console.log(this.formatNum('0625306813'));
     // console.log(this.formatNum('725306813'));
     if (!localStorage.tel) {

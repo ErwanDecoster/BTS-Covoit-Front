@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm mx-auto relative h-screen absolute inset-0 px-2">
+  <div class="mx-auto relative h-screen absolute inset-0 px-2 dark:bg-slate-900">
     <router-view/>
   </div>
 </template>

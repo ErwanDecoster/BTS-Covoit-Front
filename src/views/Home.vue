@@ -1,5 +1,5 @@
 <template>
-  <div id="" class="h-full flex flex-col">
+  <div id="" class="h-full flex flex-col w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -7,7 +7,7 @@
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <div>
-        <h2 class="text-2xl font-bold m-6 text-left">Hello {{ PersonalInformation.f_name }} !👋</h2>
+        <h2 class="text-2xl font-bold m-6 text-left dark:text-[#FFFFFF]">Hello {{ PersonalInformation.f_name }} !👋</h2>
         <p class="text-2xl font-bold text-left bg-[#A9DE8E] my-9 rounded-2xl p-4">Grâce à Covoit, économisez en partageant vos trajets.</p>
         <div class="flex flex-col gap-4">
           <router-link to="/searchtrip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2.5 rounded-full text-white font-bold text-lg">Recherche un voyage</router-link>

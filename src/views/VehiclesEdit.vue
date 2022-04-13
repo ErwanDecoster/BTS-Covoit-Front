@@ -1,5 +1,5 @@
 <template>
-  <div id="" class="h-full flex flex-col">
+  <div id="" class="h-full flex flex-col dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -39,9 +39,9 @@
         </div>
       </form>
       <div class="grid gap-4">
-        <button @click="deleteVehicleForUser" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-red-600 p-2 rounded-full text-white font-bold">Supprimer</button>
-        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Sauvegarder</button>
-        <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
+        <button @click="deleteVehicleForUser" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-red-600 p-2 rounded-full text-white font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,0,0,0.5)]">Supprimer</button>
+        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Sauvegarder</button>
+        <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Retour</button>
       </div>
     </div>
   </div>

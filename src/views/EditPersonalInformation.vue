@@ -1,5 +1,5 @@
 <template>
-  <div id="edit_password" class="flex flex-col h-full">
+  <div id="edit_password" class="flex flex-col h-full dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -11,23 +11,23 @@
         <p v-show="erreurModification === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">L'identifiants ou le mot de passe est incorrecte</p>
        <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Nom : </label>
-          <input v-model="surname" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="nom" id="nom">
+          <input v-model="surname" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="text" name="nom" id="nom">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Prénom : </label>
-          <input v-model="name" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="prenom" id="prenom">
+          <input v-model="name" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="text" name="prenom" id="prenom">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="name">Téléphone actuel : </label>
-          <input v-model="old_tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="tel" id="tel">
+          <input v-model="old_tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="text" name="tel" id="tel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="name">Nouveau téléphone : </label>
-          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="tel" id="tel">
+          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="text" name="tel" id="tel">
         </div>
         <div class="grid gap-4">
-          <button @click="persist" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Sauvegarder</button>
-          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
+          <button @click="persist" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)] mt-5">Sauvegarder</button>
+          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Retour</button>
         </div>
       </form>
     </div>

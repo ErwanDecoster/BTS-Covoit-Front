@@ -1,5 +1,5 @@
 <template>
-  <div id="createTrip" class="h-full flex flex-col">
+  <div id="createTrip" class="h-full flex flex-col dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -11,27 +11,27 @@
         <p v-for="error in errors" :key="error" @click="this.errors = [];" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">{{ error }}</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="vehicle_model">Modèle : </label>
-          <input v-model="vehicle_name" autocomplete="off" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="text" name="vehicle_model" id="vehicle_model">
+          <input v-model="vehicle_name" autocomplete="off" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="text" name="vehicle_model" id="vehicle_model">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="motorisation">Motorisation : </label>
-          <select v-model="id_motorization" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="id_motorization" id="id_motorization">
+          <select v-model="id_motorization" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" name="id_motorization" id="id_motorization">
             <option v-for="row in motorization" v-bind:key="row" :value="row.id_motorization">{{ row.libellet }}</option>
           </select>
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="number_of_place">Nombres de places : </label>
-          <input v-model="nb_places" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="number" name="number_of_place" id="number_of_place">
+          <input v-model="nb_places" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="number" name="number_of_place" id="number_of_place">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="password">Couleur : </label>
-          <select v-model="color" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" name="color" id="color">
+          <select v-model="color" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" name="color" id="color">
             <option v-for="row in VehicleColor" v-bind:key="row" :value="row.color">{{ row.color }}</option>
           </select>
         </div>
-        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Créer</button>
+        <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)] mt-5">Créer</button>
       </form>
-      <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
+      <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Retour</button>
     </div>
   </div>
   <navbar/>

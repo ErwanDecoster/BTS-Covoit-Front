@@ -1,5 +1,5 @@
 <template>
-  <div id="edit_password" class="flex flex-col h-full">
+  <div id="edit_password" class="flex flex-col h-full dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -11,23 +11,23 @@
         <p v-show="passIncorrect === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">L'identifiant ou le mot de passe est incorrecte</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Mot de passe actuel : </label>
-          <input v-model="old_password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="actual_password" id="actual_password">
+          <input v-model="old_password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="password" name="actual_password" id="actual_password">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Téléphone : </label>
-          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="actual_tel" id="actual_tel">
+          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="tel" name="actual_tel" id="actual_tel">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="name">Nouveau mot de passe : </label>
-          <input v-model="new_password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="new_password" id="new_password">
+          <input v-model="new_password" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="password" name="new_password" id="new_password">
         </div>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="name">Confirmation du nouveau mot de passe : </label>
-          <input v-model="new_password_confirmed" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="password" name="new_password_confirmed" id="new_password_confirmed">
+          <input v-model="new_password_confirmed" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="password" name="new_password_confirmed" id="new_password_confirmed">
         </div>
         <div class="grid gap-4">
-          <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold">Sauvegarder</button>
-          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button>
+          <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2 rounded-full text-white font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)] mt-5">Sauvegarder</button>
+          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Retour</button>
         </div>
       </form>
     </div>

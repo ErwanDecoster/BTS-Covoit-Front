@@ -1,5 +1,5 @@
 <template>
-  <div id="edit_password" class="flex flex-col h-full">
+  <div id="edit_password" class="flex flex-col h-full dark:text-white w-96 mx-auto w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -16,11 +16,11 @@
           </ul>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Téléphone : </label>
-          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg" type="tel" name="actual_tel" id="actual_tel">
+          <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="tel" name="actual_tel" id="actual_tel">
         </div>
         <div class="grid gap-4">
-          <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-red-500 p-2 rounded-full text-white font-bold mt-20">Confirmer la suppression de mon compte</button>
-          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Annuler</button>
+          <button class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-red-500 p-2 rounded-full text-white font-bold mt-20 dark:shadow-[0_-5px_15px_-8px_rgba(255,0,0,0.5)]">Confirmer la suppression de mon compte</button>
+          <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Annuler</button>
         </div>
       </form>
     </div>
