@@ -7,9 +7,11 @@
     </div>
       <form @submit.stop.prevent="AddLogin" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Connexion</h2>
+        <!-- Affichage des différents messages d'erreurs -->
           <p v-show="identifiantIncorrecte === 'true' && visible3 === true" @click="visible3 = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Identifiant incorrecte</p>
           <p v-show="champs === 'true' && visible2 === true" @click="visible2 = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Les champs sont vides</p>
           <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre compte a été supprimer avec succès !</p>
+        <!-- Renseigner son téléphone et le mot de passe pour se connecter -->
         <div class="grid gap-2">
           <label class="text-left font-bold" for="phone">Téléphone : </label>
           <input v-model="tel" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] rounded-full p-2 text-lg dark:text-[#000000]" type="tel" name="phone" id="tel" autocomplete="tel">
@@ -42,6 +44,7 @@ export default {
     };
   },
   methods: {
+    // Récupération des différents localstorage pour permettre de se connecter
     Locale_Storage() {
       localStorage.surname = this.surname;
       localStorage.name = this.name;
@@ -52,6 +55,7 @@ export default {
     AddLogin() {
       this.VerifNewLogin();
     },
+    // On envoie les informations de connection pour savoir s'il est bien connecter
     VerifNewLogin() {
       if (this.tel !== '' && this.password !== '') {
         axios.post('http://localhost/actions.php', {
@@ -60,6 +64,7 @@ export default {
           password: this.password,
         }).then((response) => {
           console.log(response);
+          // Si la réponse est correcte on va rediriger vers la page Home
           if (response.data === 'OK') {
             this.$router.push({ path: '/Home' });
           } else {

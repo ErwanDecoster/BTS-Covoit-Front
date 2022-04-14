@@ -46,8 +46,7 @@ export default {
   },
   mounted() {
     this.fetchallTripForUser();
-    // console.log(this.formatNum('0625306813'));
-    // console.log(this.formatNum('725306813'));
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }

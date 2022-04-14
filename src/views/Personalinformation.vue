@@ -8,8 +8,10 @@
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <form class="flex flex-col gap-4 ">
         <h2 class="text-2xl font-bold m-6">Informations personnelles :</h2>
+        <!-- Affichage des messages d'erreurs -->
         <p v-show="modifOk === 'true' && visible === true" @click="visible = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Vos informations personnelles ont été changer avec succès !</p>
         <p v-show="passOk === 'true' && visible2 === true" @click="visible2 = false" class="bg-emerald-500 p-2 rounded-lg text-white font-bold text-left">Votre mot de passe a été supprimer avec succès !</p>
+        <!-- Affichage des informations personnelles comme le nom, prénom, téléphone -->
         <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center mx-auto">
           <p class="w-fit mx-auto text-xl text-neutral-800 tracking-widest dark:text-white">{{ PersonalInformation.f_name }}{{  }}</p>
         </div>
@@ -52,16 +54,10 @@ export default {
     };
   },
   methods: {
-    // formatNum(num) {
-    //   if (num.length < 10) {
-    //     num = `0${num}`;
-    //   }
-    //   const newnum = num.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
-    //   return newnum;
-    // },
     deleteAccount() {
       this.realDelCompte = !this.realDelCompte;
     },
+    // Envoie à l'API des informations pour l'affichage des informations
     fetchPersonalInformation() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_personal_information',
@@ -75,10 +71,10 @@ export default {
   },
   mounted() {
     this.fetchPersonalInformation();
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }
-    // this.formatNum('725306813');
   },
 };
 </script>

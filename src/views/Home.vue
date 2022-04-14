@@ -7,6 +7,7 @@
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <div>
+        <!-- Affichage du nom selon le compte où l'on c'est connecter -->
         <h2 class="text-2xl font-bold m-6 text-left dark:text-[#FFFFFF]">Hello {{ PersonalInformation.f_name }} !👋</h2>
         <p class="text-2xl font-bold text-left bg-[#A9DE8E] my-9 rounded-2xl p-4">Grâce à Covoit, économisez en partageant vos trajets.</p>
         <div class="flex flex-col gap-4">
@@ -31,6 +32,7 @@ export default {
     };
   },
   methods: {
+    // Envoie à l'API pour rechercher le nom de l'utilisateur
     fetchUserName() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_home_name',
@@ -43,6 +45,7 @@ export default {
   },
   mounted() {
     this.fetchUserName();
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }

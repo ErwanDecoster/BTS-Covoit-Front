@@ -75,6 +75,7 @@ export default {
   mounted() {
     this.fetchallTripForUser();
     this.fetchallOtherTripForUser();
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }
