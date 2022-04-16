@@ -1,5 +1,5 @@
 <template>
-  <div id="edit_password" class="flex flex-col h-full dark:text-white">
+  <div id="edit_password" class="flex flex-col h-full dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -61,6 +61,7 @@ export default {
       this.fetchEditPersonalInformation();
     },
     fetchEditPersonalInformation() {
+      // Envoie à l'API des informations pour changer les informations
       axios.post('http://localhost/actions.php', {
         action: 'fetch_edit_personal_information',
         surname: this.surname,
@@ -68,6 +69,7 @@ export default {
         old_tel: this.old_tel,
         tel: this.tel,
       }).then((response) => {
+        // Redirection vers la page des informations personnelles si la requête c'est bien passer
         if (response.data === 'modification_ok') {
           this.$router.push({ name: 'Personalinformation', params: { modifOk: true } });
         } else {
@@ -76,6 +78,7 @@ export default {
       });
     },
     mounted() {
+      // Permet de ne pas aller sur la page si on est pas connecter
       if (!localStorage.tel) {
         this.$router.push({ path: '/' });
       }

@@ -1,5 +1,5 @@
 <template>
-  <div id="createTrip" class="dark:text-white">
+  <div id="createTrip" class="dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -116,8 +116,6 @@ export default {
         userTel: localStorage.tel,
         id_end_point_city: this.allCity.find((city) => city.ville_nom_reel === this.end_point).ville_id,
         id_starting_point_city: this.allCity.find((city) => city.ville_nom_reel === this.starting_point).ville_id,
-        // id_end_point_city: this.end_point,
-        // id_starting_point_city: this.starting_point,
       }).then((response) => {
         if (response.data !== ' ') {
           console.log(response.data);
@@ -128,22 +126,16 @@ export default {
     allCityStartingPointFiltred() {
       const citys = this.allCity;
       const starting = this.starting_point.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '');
-      // console.log(citys);
-      // console.log('executed');
       const result = citys.filter((city) => city.ville_nom_reel.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '')
         .startsWith(starting));
-      // console.log(result);
       this.sugestedCityStartingPoint = result.slice(0, 20);
       return result;
     },
     allCityEndPointFiltred() {
       const citys = this.allCity;
       const end = this.end_point.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '');
-      // console.log(citys);
-      // console.log('executed');
       const result = citys.filter((city) => city.ville_nom_reel.toLowerCase().replace('-', ' ').normalize('NFD').replace(/\p{Diacritic}/gu, '')
         .startsWith(end));
-      // console.log(result);
       this.sugestedCityEndPoint = result.slice(0, 20);
       return result;
     },
@@ -151,7 +143,7 @@ export default {
   mounted() {
     this.fetchAllVehiclesForUser();
     this.fetchAllCity();
-    // console.log(this.allCityFiltred(this.words));
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }

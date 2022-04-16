@@ -1,5 +1,5 @@
 <template>
-  <div id="registration" class="h-full flex flex-col dark:text-white">
+  <div id="registration" class="h-full flex flex-col dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -7,6 +7,7 @@
     </div>
       <form @submit.stop.prevent="AddRegistration" class="flex flex-col gap-4">
         <h2 class="text-2xl font-bold m-6">Inscription</h2>
+        <!-- Enregistration des éléments comme le nom, prénom, téléphone, mot de passe et la confirmation de mot de passe -->
         <p v-show="compteExistant === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Vous avez déjà un compte</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="nom">Nom : </label>
@@ -50,6 +51,7 @@ export default {
     };
   },
   methods: {
+    // Ajout des informations dans les localStorage afin de les utiliser plus facilement
     persist() {
       localStorage.surname = this.surname;
       localStorage.name = this.name;
@@ -60,6 +62,7 @@ export default {
     AddRegistration() {
       this.addNewRegistration();
     },
+    // Envoie à l'API de ces informations pour qu'elle soit enregistrer dans la BDD
     addNewRegistration() {
       axios.post('http://localhost/actions.php', {
         action: 'new_registration',
@@ -69,9 +72,11 @@ export default {
         password: this.password,
         password_confirmed: this.password_confirmed,
       }).then((response) => {
+        // Renvoie un message d'erreur
         if (response.data === 'Vous avez déjà un compte') {
           this.compteExistant = 'true';
         } else {
+          // Envoie sur la page de connection
           console.log(response);
           this.$router.push({ path: '/' });
         }

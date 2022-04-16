@@ -1,5 +1,5 @@
 <template>
-  <div id="edit_password" class="flex flex-col h-full dark:text-white">
+  <div id="edit_password" class="flex flex-col h-full dark:text-white w-96 mx-auto w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -7,7 +7,9 @@
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
       <form class="flex flex-col gap-4" @submit.stop.prevent="deleteAccount">
+        <!-- Message d'erreurs si le compte n'a pas été supprimer -->
         <p v-show="problemAccount === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">Votre compte n'a malheuresement pas pu être supprimer</p>
+        <!-- Informations sur les risques lié à la suppression d'un compte -->
         <div class="text-left text-xl text-center mt-20"><strong>Avant de désactiver votre compte, sachez que:</strong></div>
           <ul>
             <li class="text-left">- La suppression de votre compte est définitive.</li>
@@ -46,6 +48,7 @@ export default {
     deleteAccount() {
       this.fetchConfirmationDelete();
     },
+    // Envoie à l'API une confirmation de suppression
     fetchConfirmationDelete() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_delete_account',
@@ -58,6 +61,7 @@ export default {
         }
       });
     },
+    // Permet de ne pas aller sur la page si on est pas connecter
     mounted() {
       if (!localStorage.tel) {
         this.$router.push({ path: '/' });

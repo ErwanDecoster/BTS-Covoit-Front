@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="h-full flex flex-col">
+  <div id="login" class="h-full flex flex-col w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -21,7 +21,6 @@
           </div>
         </div>
       </div>
-      <!-- <button @click="$router.go(-1)" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-white p-2 rounded-full text-neutral-900 font-bold">Retour</button> -->
     </div>
   </div>
   <navbar/>
@@ -65,8 +64,7 @@ export default {
   mounted() {
     this.fetchallTripForUser();
     this.fetchallTripForUserPassenger();
-    // console.log(this.formatNum('0625306813'));
-    // console.log(this.formatNum('725306813'));
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }

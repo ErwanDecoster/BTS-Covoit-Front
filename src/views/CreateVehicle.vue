@@ -1,5 +1,5 @@
 <template>
-  <div id="createTrip" class="h-full flex flex-col dark:text-white">
+  <div id="createTrip" class="h-full flex flex-col dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -104,6 +104,7 @@ export default {
   },
   mounted() {
     this.fetchAllMotorization();
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }

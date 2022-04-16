@@ -1,13 +1,15 @@
 <template>
-  <div id="edit_password" class="flex flex-col h-full dark:text-white">
+  <div id="edit_password" class="flex flex-col h-full dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
       </h1>
     </div>
     <div class="grow flex flex-col justify-between gap-4 pb-20">
+      <!-- Formulaire pour renseigner les nouveaux champs a enregistrer -->
       <form class="flex flex-col gap-4" @submit.stop.prevent="NewPassword">
         <h2 class="text-2xl font-bold my-6">Modification du mot de passe :</h2>
+        <!-- Message d'erreur s'il y a eut un problème lors du changement -->
         <p v-show="passIncorrect === 'true' && visible === true" @click="visible = false" class="bg-red-500 p-2 rounded-lg text-white font-bold text-left">L'identifiant ou le mot de passe est incorrecte</p>
         <div class="grid gap-2">
           <label class="text-left font-bold" for="actual_password">Mot de passe actuel : </label>
@@ -55,6 +57,7 @@ export default {
     NewPassword() {
       this.fetchEditPassword();
     },
+    // Envoie à l'API des informations pour changer les informations
     fetchEditPassword() {
       axios.post('http://localhost/actions.php', {
         action: 'fetch_edit_password',
@@ -63,6 +66,7 @@ export default {
         new_password_confirmed: this.new_password_confirmed,
         tel: this.tel,
       }).then((response) => {
+        // Redirection vers la page des informations personnelles si la requête c'est bien passer
         if (response.data === 'password_confirmed_ok') {
           this.$router.push({ name: 'Personalinformation', params: { passOk: true } });
         } else {
@@ -71,6 +75,7 @@ export default {
       });
     },
     mounted() {
+      // Permet de ne pas aller sur la page si on est pas connecter
       if (!localStorage.tel) {
         this.$router.push({ path: '/' });
       }

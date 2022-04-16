@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class=" dark:text-white">
+  <div id="login" class=" dark:text-white w-96 mx-auto">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
@@ -80,6 +80,7 @@ export default {
   },
   mounted() {
     this.fetchAllCity();
+    // Permet de ne pas aller sur la page si on est pas connecter
     if (!localStorage.tel) {
       this.$router.push({ path: '/' });
     }
