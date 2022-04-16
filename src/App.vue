@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto relative h-screen absolute inset-0 px-2 dark:bg-slate-900">
+  <div class="max-w-sm mx-auto relative h-screen absolute inset-0 px-2 dark:bg-slate-900">
     <router-view/>
   </div>
 </template>
@@ -10,6 +10,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #0F172A;
 }
 
 #nav {

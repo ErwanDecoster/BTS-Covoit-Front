@@ -11,9 +11,9 @@
         <h2 class="text-2xl font-bold m-6 text-left dark:text-[#FFFFFF]">Hello {{ PersonalInformation.f_name }} !👋</h2>
         <p class="text-2xl font-bold text-left bg-[#A9DE8E] my-9 rounded-2xl p-4">Grâce à Covoit, économisez en partageant vos trajets.</p>
         <div class="flex flex-col gap-4">
-          <router-link to="/searchtrip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2.5 rounded-full text-white font-bold text-lg">Recherche un voyage</router-link>
-          <router-link to="/CreateTrip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2.5 rounded-full text-white font-bold text-lg">Créer un voyage</router-link>
-          <router-link to="/trip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2.5 rounded-full text-white font-bold text-lg">Vos voyages</router-link>
+          <router-link to="/searchtrip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2.5 rounded-full text-white font-bold text-lg dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Recherche un voyage</router-link>
+          <router-link to="/CreateTrip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2.5 rounded-full text-white font-bold text-lg dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Créer un voyage</router-link>
+          <router-link to="/trip" class="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] bg-neutral-800 p-2.5 rounded-full text-white font-bold text-lg dark:shadow-[0_-5px_15px_-8px_rgba(255,255,255,0.5)]">Vos voyages</router-link>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 <template>
   <div @click="extend = !extend" class="bg-white p-6 rounded-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] flex flex-col gap-4 duration-200">
-    {{ trip.id_trip }}
     <p class="font-bold text-left text-lg">{{ formatDate(trip.starting_date) }}</p>
     <div class="stop">
       <div class="flex gap-6 items-center h-6">
@@ -45,7 +44,7 @@
     </div>
     <span class="w-full bg-[#30A4A8] h-[2px] opacity-20"></span>
     <div class="flex item-center gap-4">
-      <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center" :src="trip.img" alt="">
+      <div class="h-14 w-14 bg-[#30A4A8] rounded-full flex flex-col justify-center">
         <p class="w-fit mx-auto text-xl text-neutral-800 tracking-widest">{{ returnFirstLetter(trip.f_name) }}{{ returnFirstLetter(trip.l_name) }}</p>
       </div>
       <div class="flex flex-col justify-center">
