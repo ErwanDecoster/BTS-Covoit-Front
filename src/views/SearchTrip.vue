@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class=" dark:text-white w-96 mx-auto">
+  <div id="login" class=" dark:text-white w-96 mx-auto max-w-sm">
     <div class="logo pt-6">
       <h1>
         <img class="mx-auto" src="@/assets/logos/covoit.svg" alt="">
