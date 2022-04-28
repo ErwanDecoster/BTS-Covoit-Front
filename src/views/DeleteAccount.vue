@@ -50,7 +50,7 @@ export default {
     },
     // Envoie à l'API une confirmation de suppression
     fetchConfirmationDelete() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetch_delete_account',
         tel: this.tel,
       }).then((response) => {

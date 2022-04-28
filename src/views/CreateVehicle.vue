@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     fetchAllMotorization() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_motorization',
       }).then((response) => {
         this.motorization = response.data;
@@ -89,7 +89,7 @@ export default {
       }
     },
     AddVehicle() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'add_vehicle',
         userTel: localStorage.tel,
         vehicle_name: this.vehicle_name,

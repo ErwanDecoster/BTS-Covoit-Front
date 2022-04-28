@@ -92,7 +92,7 @@ export default ({
       return `${dayName} ${dateNumber} ${mouthName}`;
     },
     addTripPassenger(idTripProps, startingPointProps, houreOfTravelProps) {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'add_trip_passenger',
         startingPointCity: startingPointProps,
         departureTime: houreOfTravelProps,

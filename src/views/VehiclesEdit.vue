@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     fetchVehiclesForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetch_vehicle_for_user',
         tel: '0625306813',
         vehicleRowId: this.vehicleRowId,
@@ -77,7 +77,7 @@ export default {
       });
     },
     deleteVehicleForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'delete_vehicle_for_user',
         vehicleId: this.VehiclesForUser.id_vehicles,
         tel: '0625306813',

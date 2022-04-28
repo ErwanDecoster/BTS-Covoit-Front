@@ -34,7 +34,7 @@ export default {
   methods: {
     // Envoie à l'API pour rechercher le nom de l'utilisateur
     fetchUserName() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetch_home_name',
         userTel: localStorage.tel,
       }).then((response) => {

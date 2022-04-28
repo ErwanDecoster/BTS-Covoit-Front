@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     fetchallTripForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_trip_for_user_up_to_date',
         tel: localStorage.tel,
       }).then((response) => {
@@ -51,7 +51,7 @@ export default {
       });
     },
     fetchallTripForUserPassenger() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_trip_for_user_passenger_up_to_date',
         tel: localStorage.tel,
       }).then((response) => {

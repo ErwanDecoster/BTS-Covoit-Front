@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     fetchAllCity() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_city',
       }).then((response) => {
         if (response.data !== ' ') {

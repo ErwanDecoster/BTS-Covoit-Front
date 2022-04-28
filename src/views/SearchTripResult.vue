@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     fetchallTripForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_trip_for_endcity_up_to_date',
         endpointCity: this.endpointCity,
         dateOfTravel: this.dateOfTravel,
@@ -61,7 +61,7 @@ export default {
       });
     },
     fetchallOtherTripForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_trip_for_endcity_aproximative_up_to_date',
         endpointCity: this.endpointCity,
         dateOfTravel: this.dateOfTravel,

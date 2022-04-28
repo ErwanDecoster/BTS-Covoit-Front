@@ -59,7 +59,7 @@ export default {
     },
     // Envoie à l'API des informations pour l'affichage des informations
     fetchPersonalInformation() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetch_personal_information',
         userTel: localStorage.tel,
         userName: localStorage.name,
