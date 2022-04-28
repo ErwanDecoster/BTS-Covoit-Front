@@ -62,7 +62,7 @@ export default {
     },
     fetchEditPersonalInformation() {
       // Envoie à l'API des informations pour changer les informations
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetch_edit_personal_information',
         surname: this.surname,
         name: this.name,

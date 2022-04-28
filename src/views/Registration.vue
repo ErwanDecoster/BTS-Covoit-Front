@@ -64,7 +64,7 @@ export default {
     },
     // Envoie à l'API de ces informations pour qu'elle soit enregistrer dans la BDD
     addNewRegistration() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'new_registration',
         surname: this.surname,
         name: this.name,

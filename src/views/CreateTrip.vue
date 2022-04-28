@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     fetchAllVehiclesForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_vehicles_for_user',
         tel: localStorage.tel,
       }).then((response) => {
@@ -75,7 +75,7 @@ export default {
       });
     },
     fetchAllCity() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_city',
       }).then((response) => {
         if (response.data !== ' ') {
@@ -108,7 +108,7 @@ export default {
       }
     },
     CreateTrip() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'create_trip',
         starting_date: this.date_of_travel,
         departure_time: this.houre_of_travel,

@@ -58,7 +58,7 @@ export default {
     // On envoie les informations de connection pour savoir s'il est bien connecter
     VerifNewLogin() {
       if (this.tel !== '' && this.password !== '') {
-        axios.post('http://localhost/actions.php', {
+        axios.post('https://covoit.erwan-decoster.com/actions.php', {
           action: 'verif_login',
           tel: this.tel,
           password: this.password,

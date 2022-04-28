@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     fetchallTripForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_trip_for_user',
         tel: localStorage.tel,
       }).then((response) => {

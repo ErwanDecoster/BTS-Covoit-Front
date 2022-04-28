@@ -59,7 +59,7 @@ export default {
     },
     // Envoie à l'API des informations pour changer les informations
     fetchEditPassword() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetch_edit_password',
         old_password: this.old_password,
         new_password: this.new_password,

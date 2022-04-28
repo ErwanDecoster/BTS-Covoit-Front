@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     fetchAllVehiclesForUser() {
-      axios.post('http://localhost/actions.php', {
+      axios.post('https://covoit.erwan-decoster.com/actions.php', {
         action: 'fetchall_vehicles_for_user',
         tel: localStorage.tel,
       }).then((response) => {
